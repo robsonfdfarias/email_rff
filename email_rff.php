@@ -20,26 +20,28 @@ if(!defined('WPINC')){
  define('EMAIL_RFF_URL_JS', plugins_url('js/', __FILE__)); //Caminho da pasta dos arquivos JS
  define('EMAIL_RFF_URL_EDITOR', plugins_url('rffeditor/', __FILE__)); //URL da pasta dos arquivos do editor
  define('EMAIL_RFF_DIR_EDITOR', dirname(__FILE__).'/rffeditor/'); //Caminho da pasta dos arquivos do editor
-
+ define('EMAIL_RFF_TABLE_CATEG', 'email_rff_categ');
+ define('EMAIL_RFF_TABLE_EMAIL', 'email_rff_email');
 
  // Adiciona o CSS e JS
-// function email_rff_adicionar_scripts() {
-//     wp_enqueue_style('email-rff-editor-p1-css', plugin_dir_url(__FILE__) . 'rffeditor/editorRobsonFarias.css');
-//     wp_enqueue_style('email-rff-editor-p2-css', plugin_dir_url(__FILE__) . 'rffeditor/janMovEdiExc.css');
-//     wp_enqueue_style('email-rff-editor-p3-css', plugin_dir_url(__FILE__) . 'rffeditor/print.css');
-//     wp_enqueue_style('email-rff-modal-css', plugin_dir_url(__FILE__) . 'css/email_rff_style.css');
-//     wp_enqueue_script('email-rff-modal-js', plugin_dir_url(__FILE__) . 'js/email_rff_functions.js', array('jquery'), null, true);
+function email_rff_adicionar_scripts() {
+    wp_enqueue_style('email-rff-editor-p2-css', plugin_dir_url(__FILE__) . 'rffeditor/janMovEdiExc.css');
+    wp_enqueue_style('email-rff-editor-p3-css', plugin_dir_url(__FILE__) . 'rffeditor/print.css');
+    wp_enqueue_style('email-rff-admin-css', plugin_dir_url(__FILE__) . 'css/email_rff_admin.css');
+    wp_enqueue_script('email-rff-admin-js', plugin_dir_url(__FILE__) . 'js/email_rff_admin.js', array('jquery'), null, true);
 
-// }
+}
   
-//   add_action('admin_enqueue_scripts', 'email_rff_adicionar_scripts');
+  add_action('admin_enqueue_scripts', 'email_rff_adicionar_scripts');
 
-//  // Adiciona o CSS e JS
-//  function email_rff_adicionar_scripts_wp() {
-//     wp_enqueue_style('email-rff-editor-p1-css', plugin_dir_url(__FILE__) . 'rffeditor/editorRobsonFarias.css');
-//   }
+ // Adiciona o CSS e JS
+ function email_rff_adicionar_scripts_wp() {
+    wp_enqueue_style('email-rff-editor-p1-css', plugin_dir_url(__FILE__) . 'rffeditor/editorRobsonFarias.css');
+    wp_enqueue_style('email-rff-wp-css', plugin_dir_url(__FILE__) . 'css/email_rff_wp.css');
+    wp_enqueue_script('email-rff-wp-js', plugin_dir_url(__FILE__) . 'js/email_rff_wp.js', array('jquery'), null, true);
+  }
   
-//   add_action('wp_enqueue_scripts', 'email_rff_adicionar_scripts_wp');
+  add_action('wp_enqueue_scripts', 'email_rff_adicionar_scripts_wp');
 
    /**
    * Includes PHP
@@ -48,3 +50,8 @@ if(file_exists(plugin_dir_path(__FILE__).'email-rff-core.php')){
     require_once(plugin_dir_path(__FILE__).'email-rff-core.php');
 }
 
+if(file_exists(EMAIL_RFF_CORE_INC.'email_rff_hooks.php')){
+    include_once(EMAIL_RFF_CORE_INC.'email_rff_hooks.php');
+    register_activation_hook(__FILE__, 'email_rff_install');
+    register_deactivation_hook(__FILE__, 'email_rff_uninstall');
+}
