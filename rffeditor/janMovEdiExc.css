@@ -1,0 +1,293 @@
+
+
+/******************************** Inicio da configuração da janela de vídeo ***************************************/
+
+
+
+
+.drag-over {
+    border: dashed 3px red;
+}
+
+/* #tools{
+    display: none;
+    position:absolute;
+    top: 0px;
+} */
+
+.item {
+    /* height: 425px;
+    width: 300px; */
+    /* padding-top:25px; */
+    /* min-width: 100px;
+    min-height: 50px; */
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    width: fit-content;
+    height: 200px;
+    background-image: none;
+    /* background-size: contain; */
+    /* background-position: 120% top; */
+    background-position: calc(100%+45px) top;
+    resize: both;
+    overflow: visible;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+.item:hover {
+    /* height: 325px;
+    width: 400px; */
+    /* padding-top:25px; */
+    padding-right: 45px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 3px solid #029669;
+    background-image: url('imgEditor/arrastar.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    cursor:move;
+    scrollbar-width: thin;
+    /* overflow: auto; */
+    overflow:auto;
+}
+
+.item::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #6e6ea9;
+  }
+
+.item img {
+    cursor: default;
+}
+
+/* .item:hover #tools{
+    display: flex;
+} */
+
+.hide {
+    display: none;
+}
+
+#arrastar{
+    width: 100px; 
+    height: 50px; 
+    background-color:#029669;
+}
+
+.captionText::before{
+    content: 'Clique aqui para digitar seu texto';
+}
+
+
+
+/******************************** FIM da configuração da janela de vídeo ***************************************/
+
+/* .table {
+    resize: both;
+    overflow: auto;
+    box-sizing: border-box;
+} */
+
+
+
+#tableTdInicialSmall {
+    /* display: revert; */
+    width: 20px !important; 
+    background-color: #cdcdcd; 
+    resize: vertical !important; 
+    overflow: auto; 
+    box-sizing: border-box;
+    border: 1px solid #000;
+}
+
+#tableTdInicialLarg {
+    height:20px !important; 
+    /* width: 100px;  */
+    width:100px;
+    background-color: #cdcdcd;
+    border: 1px solid #000;
+    resize: horizontal;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+#tableTdInicialPoint{
+    height:20px !important; 
+    width: 20px !important; 
+    background-color: #cdcdcd;
+    border: 1px solid #000;
+}
+
+.tabela tbody tr:first-child td:first-child{
+    resize: none;
+}
+
+.tabela tbody tr:first-child td{
+    resize: horizontal;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.tabela tbody tr td:focus-visible{
+    background-color: #bef4fd;
+    outline: 2px dotted #ff1414 !important;
+    border-radius: 5px;
+    /* box-shadow: 0 0 5px 3px rgb(166, 255, 2), 0 0 5px 3px rgb(2, 255, 116); */
+}
+
+.selectedCel{
+    /* background-color: #c1f364; */
+    box-shadow: inset 0 0 10px #02859c, inset 0 0 10px #017a8f, inset 0 0 10px #026a7c
+    , inset 0 0 10px #014d5a, inset 0 0 10px #00333b, inset 0 0 10px #02859c
+    , inset 0 0 10px #014d5a, inset 0 0 10px #00333b, inset 0 0 10px #02859c;
+}
+
+
+
+
+.configTable{
+    display: none;
+    position:absolute;
+    top: -45px;
+    background-color:#fff;
+    border: 1px solid #000;
+    width: fit-content;
+    height: 45px;
+    padding: 0;
+    z-index: 10000;
+}
+
+
+
+
+.tabelaObj {
+    /* height: 425px;
+    width: 300px; */
+    /* padding-top:25px; */
+    /* min-width: 100px;
+    min-height: 50px; */
+    /* background-color: rgb(255, 255, 255); */
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    /* background-image: none; */
+    /* background-size: contain; */
+    /* background-position: 120% top; */
+    /* background-position: calc(100%+45px) top; */
+    resize: both;
+    /* overflow: auto; */
+    box-sizing: border-box;
+}
+
+.tabelaObj:hover {
+    /* height: 325px;
+    width: 400px; */
+    /* padding-top:55px; */
+    /* padding-right: 45px; */
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    /* border: 3px solid #029669; */
+    /* background-image: url('imgEditor/arrastar.png'); */
+    /* background-repeat: no-repeat;
+    background-position: right top;
+    cursor:move; */
+}
+
+.tabelaObj img {
+    cursor: default;
+}
+
+.tabelaObj:hover .configTable{
+    display: flex;
+    flex-direction: row;
+}
+
+#testeSel{
+    padding: 0;
+}
+
+
+
+#menuTable{
+    list-style:none;
+    border:1px solid #c0c0c0;
+    /* float:left; */
+    padding-left:0;
+    margin: 0;
+}
+
+#menuTable li{
+    position:relative;
+    float:left;
+    border-right:1px solid #c0c0c0;
+}
+
+#menuTable li  ul{
+    position:absolute;
+    top:40px;
+    left:0;
+    background-color:#fff;
+    display:none;
+    padding-left:0;
+}
+
+#menuTable li:hover ul, #menuTable li.over ul{display:block;}
+
+#menuTable li ul li{
+    border:1px solid #c0c0c0;
+    display:block;
+    /* width:150px; */
+    width:fit-content;
+}
+
+#menuTable img{
+    cursor: pointer;
+}
+
+
+#efeitosTexto{
+    z-index: 10001;
+}
+
+#emotions{
+    z-index: 10002;
+}
+
+.classBreakPage{
+    position: relative;
+    margin: 10px;
+    background-color: #e3e1e1;
+    border: 1px dotted #8d8b8b;
+    transition: ease-in-out 0.3s all;
+}
+
+.classBreakPage::before{
+    content: 'Quebra de Linha';
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    transition: ease-in-out 0.3s all;
+}
+
+.classBreakPage:hover{
+    background-color: #60a691;
+    transition: ease-in-out 0.3s all;
+}
+
+#viewRefBreakPage{
+    display: flex;
+}
+
+#textoBreakPageUp{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+}
+
+@media print{
+    .configTable{
+        visibility: hidden;
+        display: none;
+    }
+}

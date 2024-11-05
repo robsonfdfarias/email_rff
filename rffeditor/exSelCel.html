@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Table with Cell Selection</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        td[contenteditable="true"] {
+            background-color: #e0e0e0;
+        }
+
+        .selected {
+            background-color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+
+<table id="editableTable" contenteditable="true">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td contenteditable="true">John Doe</td>
+            <td contenteditable="true">25</td>
+            <td contenteditable="true">john.doe@example.com</td>
+        </tr>
+        <tr>
+            <td contenteditable="true">Jane Doe</td>
+            <td contenteditable="true">30</td>
+            <td contenteditable="true">jane.doe@example.com</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    var isMouseDown = false;
+    var startCell, endCell;
+
+    document.addEventListener('mouseup', function(){
+
+        let tdd = document.createElement('td');
+        console.log(window.getSelection().getRangeAt(0).startContainer)
+        console.log(window.getSelection().getRangeAt(0).endContainer)
+        console.log(window.getSelection().getRangeAt(0).startOffset)
+        console.log(window.getSelection().type);
+        console.log(window.getSelection().getRangeAt(0).commonAncestorContainer)
+    })
+
+
+
+    document.getElementById('editableTable').addEventListener('mousedown', function (event) {
+        isMouseDown = true;
+        // startCell = event.target;
+        // endCell = event.target;
+        startCell = window.getSelection().getRangeAt(0).startContainer;
+        endCell = window.getSelection().getRangeAt(0).endContainer;
+        updateSelection();
+    });
+
+    document.addEventListener('mousemove', function (event) {
+        if (isMouseDown) {
+            endCell = event.target;
+            updateSelection();
+        }
+    });
+
+    document.addEventListener('mouseup', function () {
+        isMouseDown = false;
+    });
+
+    function updateSelection() {
+        var cells = getCellsBetween(startCell, endCell);
+
+        // Limpa a seleção anterior
+        document.querySelectorAll('.selected').forEach(function (cell) {
+            cell.classList.remove('selected');
+        });
+
+        // Adiciona a classe 'selected' às células na seleção atual
+        cells.forEach(function (cell) {
+            cell.classList.add('selected');
+        });
+    }
+
+    function getCellsBetween(start, end) {
+        var startRowIndex = start.parentElement.rowIndex;
+        var endRowIndex = end.parentElement.rowIndex;
+        var startCellIndex = start.cellIndex;
+        var endCellIndex = end.cellIndex;
+
+        var rows = document.querySelectorAll('#editableTable tbody tr');
+        var selectedCells = [];
+
+        for (var i = Math.min(startRowIndex, endRowIndex); i <= Math.max(startRowIndex, endRowIndex); i++) {
+            var cells = rows[i].querySelectorAll('td');
+            for (var j = Math.min(startCellIndex, endCellIndex); j <= Math.max(startCellIndex, endCellIndex); j++) {
+                selectedCells.push(cells[j]);
+            }
+        }
+
+        return selectedCells;
+    }
+</script>
+
+</body>
+</html>

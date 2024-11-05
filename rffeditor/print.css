@@ -1,0 +1,12 @@
+@media print {
+    body *{
+        visibility: hidden;
+    }
+    #pages * {
+        visibility: visible;
+    }
+    /* #pages {
+        position: fixed;
+
+    } */
+}
