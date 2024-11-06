@@ -28,6 +28,7 @@ function email_rff_adicionar_scripts() {
     wp_enqueue_style('email-rff-editor-p2-css', plugin_dir_url(__FILE__) . 'rffeditor/janMovEdiExc.css');
     wp_enqueue_style('email-rff-editor-p3-css', plugin_dir_url(__FILE__) . 'rffeditor/print.css');
     wp_enqueue_style('email-rff-admin-css', plugin_dir_url(__FILE__) . 'css/email_rff_admin.css');
+    wp_enqueue_script('email-rff-admin-get-url-js', plugin_dir_url(__FILE__) . 'js/email_rff_admin_get_url.js', array('jquery'), null, true);
     wp_enqueue_script('email-rff-admin-js', plugin_dir_url(__FILE__) . 'js/email_rff_admin.js', array('jquery'), null, true);
 
 }

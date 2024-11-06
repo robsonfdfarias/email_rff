@@ -22,24 +22,18 @@ add_action('admin_menu', 'add_menu_admin_page_email_rff');
 // $url_rff_dir_editor = EMAIL_RFF_DIR_EDITOR;
 
 
-if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_email.php")){
-    include_once(EMAIL_RFF_CORE_INC."email_rff_db_email.php");
+if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_email_controller.php")){
+    include_once(EMAIL_RFF_CORE_INC."email_rff_db_email_controller.php");
 }
 
 function email_rff_admin_page(){
     emailRffCreateFolderIfNotExists();
-    $emailRffDBEmail = new EmailRffDBEmail();
-    if(isset($_POST['email_rff_bt_update'])){
-        echo '<h1>--------------'.$_POST['email_rff_bt_update'].'</h1>';
-    }
-    if(isset($_POST['email_rff_bt_delete'])){
-        echo '<h1>--------------'.$_POST['email_rff_bt_delete'].'</h1>';
-    }
-    if(isset($_POST['email_rff_bt_add'])){
-        echo '<h1>--------------'.$_POST['email_rff_bt_add'].'</h1>';
-    }
-    if(isset($_POST['email_rff_title'])){
-        echo '<h1>'.$_POST['email_rff_title'].'</h1>';
+    $emailRffDBEmailController = new EmailRffDBEmailController();
+    $emailRffDBEmailController->actionOnSubmitForm();
+    if(isset($_GET['idEmail'])){
+        // echo 'ID do email encontrado: '.$_GET['idEmail'];
+        $item = $emailRffDBEmailController->getEmailById($_GET['idEmail']);
+        echo '<div id="email_rff_item_data" style="display:none;">'.$item.'</div>';
     }
     ?>
     <div id="wrap">
@@ -52,53 +46,7 @@ function email_rff_admin_page(){
         <div id="content" style="background:white; min-height:80vh; padding:20px;">
             <a onclick="emailRffNewEmail()" class="page-title-action">Criar novo email</a>
             <a onclick="emailRffNewEmail()" class="page-title-action">Categorias</a>
-            <?php
-                $arr = $emailRffDBEmail->getAllEmails();
-                // echo '<pre>'.print_r($arr, true).'</pre>';
-                echo '<table class="wp-list-table widefat fixed striped" style="table-layout: auto !important;">
-                    <tr>
-                        <td>
-                            ID
-                        </td>
-                        <td>
-                            Título
-                        </td>
-                        <td>
-                            Status
-                        </td>
-                        <td>
-                            Categoria
-                        </td>
-                        <td>
-                            Ação
-                        </td>
-                    </tr>';
-                foreach($arr as $email){
-                    if($email['itemStatus']=="Enviado"){
-                        $valueBt = "Reenviar";
-                    }else{
-                        $valueBt = "Enviar";
-                    }
-                    echo '<tr>';
-                    echo '<td>';
-                    echo $email['id'];
-                    echo '</td>';
-                    echo '<td>';
-                    echo $email['title'];
-                    echo '</td>';
-                    echo '<td>';
-                    echo emailRffFormatStatus($email['itemStatus']);
-                    echo '</td>';
-                    echo '<td>';
-                    echo $email['category']['title'];
-                    echo '</td>';
-                    echo '<td>';
-                    echo '<a class="btstatusTable" onclick="">'.$valueBt.'</a>';
-                    echo '</td>';
-                    echo '</tr>';
-                }
-                echo '</table>';
-            ?>
+            
             <div id="emailRffDivForm" style="position:absolute; width:98%; height:90vh; display:none; flex-direction:column; padding: 20px; top:0;left:0; background-color: #fff; margin-left:-20px; z-index:1000;">
                 <h1 id="formTituloEmailRff">Você está na new</h1>
                 <?php
@@ -115,6 +63,7 @@ function email_rff_admin_page(){
                             <option value="val">val</option>
                         </select>
                     </p>
+                    <input type="hidden" name="email_rff_id_form" id="email_rff_id_form">
                     <button type="submit" name="email_rff_bt_update" id="email_rff_bt_update" onclick="emailRffSubmitForm(this)">Atualizar</button>
                     <button type="submit" name="email_rff_bt_delete" id="email_rff_bt_delete" onclick="emailRffSubmitForm(this)">Deletar</button>
                     <button type="submit" name="email_rff_bt_add" id="email_rff_bt_add" onclick="emailRffSubmitForm(this)">Cadastrar</button>
@@ -122,29 +71,59 @@ function email_rff_admin_page(){
                 </form>
             </div>
             <script>
-                function emailRffSubmitForm(bt){
-                    let email_rff_formulario = document.getElementById('email_rff_formulario');
-                    if(email_rff_formulario){
-                        var inputHidden = document.createElement('input');
-                        inputHidden.type = 'hidden';
-                        inputHidden.name = bt.id;
-                        inputHidden.value = bt.id; 
-                        email_rff_formulario.appendChild(inputHidden);
-                        email_rff_formulario.submit();
-                    }
-                }
-                let emailRffDivForm = document.getElementById('emailRffDivForm');
-                function emailRffCancel(){
-                    if(emailRffDivForm){
-                        emailRffDivForm.style.display='none';
-                    }
-                }
-                function emailRffNewEmail(){
-                    if(emailRffDivForm){
-                        emailRffDivForm.style.display='block';
-                    }
+                if(document.getElementById('email_rff_item_data')){
+                    let bt = document.createElement('a');
+                    getVarEditEmailRff();
                 }
             </script>
+
+                <?php
+                    $arr = $emailRffDBEmailController->getAllEmails();
+                    // echo '<pre>'.print_r($arr, true).'</pre>';
+                    echo '<table class="wp-list-table widefat fixed striped" style="table-layout: auto !important;">
+                        <tr>
+                            <td>
+                                ID
+                            </td>
+                            <td>
+                                Título
+                            </td>
+                            <td>
+                                Status
+                            </td>
+                            <td>
+                                Categoria
+                            </td>
+                            <td>
+                                Ação
+                            </td>
+                        </tr>';
+                    foreach($arr as $email){
+                        if($email['itemStatus']=="Enviado"){
+                            $valueBt = "Reenviar";
+                        }else{
+                            $valueBt = "Enviar";
+                        }
+                        echo '<tr>';
+                        echo '<td>';
+                        echo $email['id'];
+                        echo '</td>';
+                        echo '<td>';
+                        echo $email['title'];
+                        echo '</td>';
+                        echo '<td>';
+                        echo emailRffFormatStatus($email['itemStatus']);
+                        echo '</td>';
+                        echo '<td>';
+                        echo '<span id="'.$email['category']['id'].'">'.$email['category']['title'].'</span>';
+                        echo '</td>';
+                        echo '<td>';
+                        echo '<a class="btstatusTable" onclick="openEditEmailRff(\'idEmail\', \''.$email['id'].'\')">'.$valueBt.'</a>';
+                        echo '</td>';
+                        echo '</tr>';
+                    }
+                    echo '</table>';
+                ?>
             </div>
         </div>
     </div>

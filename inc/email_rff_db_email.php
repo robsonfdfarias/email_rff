@@ -21,7 +21,7 @@ class EmailRffDBEmail{
             $items[] = [
                 "id"=>$item['id'],
                 "title"=>$item['title'],
-                "content"=>$item['content'],
+                // "content"=>$item['content'],
                 "itemStatus"=>$item['itemStatus'],
                 "category"=>[
                     "id" => $cat['id'],
@@ -31,6 +31,25 @@ class EmailRffDBEmail{
             ];
         }
         return $items;
+    }
+    function getEmailById($id){
+        $res = $this->db->get_results("SELECT * FROM {$this->table_email} WHERE id={$id}", ARRAY_A);
+        $itemAr = '';
+        foreach($res as $item){
+            $cat = $this->db_categ->getCatById($item['category']);
+            $itemAr = '{
+                "id": '.$item['id'].',
+                "title": '.$item['title'].',
+                "content": '.$item['content'].',
+                "itemStatus": '.$item['itemStatus'].',
+                "category": {
+                    "id": '.$cat['id'].',
+                    "title": '.$cat['title'].',
+                    "statusItem": '.$cat['statusItem'].',
+                }
+            }';
+        }
+        return $itemAr;
     }
     function insertEmail($title, $content, $itemStatus, $category){
         $res = $this->db->insert(
@@ -42,11 +61,7 @@ class EmailRffDBEmail{
                 "category" => $category,
             )
         );
-        if($res<=0 || $res==false){
-            echo '<div class="notice notice-failure is-dismissible" style="top:-50px;"><p>Não foi possível inserir o e-mail. Erro: '.$this->db->last_error.'</p></div>';
-        }else{
-            echo '<div class="notice notice-success is-dismissible" style="top:-50px;"><p>E-mail <strong>inserido</strong> com sucesso!</p></div>';
-        }
+        return $res;
     }
     function updateEmail($id, $title, $content, $itemStatus, $category){
         $res = $this->db->update(
@@ -61,11 +76,7 @@ class EmailRffDBEmail{
             array("%s"),
             array("%d"),
         );
-        if($res<=0 || $res==false){
-            echo '<div class="notice notice-failure is-dismissible" style="top:-50px;"><p>Não foi possível atualizar o email. Erro: '.$this->db->last_error.'</p></div>';
-        }else{
-            echo '<div class="notice notice-success is-dismissible" style="top:-50px;"><p>E-mail <strong>atualizado</strong> com sucesso!</p></div>';
-        }
+        return $res;
     }
     function deleteEmail($id){
         $res = $this->db->delete(
@@ -73,10 +84,6 @@ class EmailRffDBEmail{
             array("id"=>$id),
             array("%d"),
         );
-        if($res<=0 || $res==false){
-            echo '<div class="notice notice-failure is-dismissible" style="top:-50px;"><p>Não foi possível deletar o e-mail. Erro: '.$this->db->last_error.'</p></div>';
-        }else{
-            echo '<div class="notice notice-success is-dismissible" style="top:-50px;"><p>E-mail <strong>deletado</strong> com sucesso!</p></div>';
-        }
+        return $res;
     }
 }

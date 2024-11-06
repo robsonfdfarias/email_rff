@@ -4,8 +4,8 @@
 <head>
 
 <title>Editor de Texto JavaScript ::: Linha de Código (Robson Farias)</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo POSTS_RFF_URL_EDITOR; ?>editorRobsonFarias.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo POSTS_RFF_URL_EDITOR; ?>janMovEdiExc.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo EMAIL_RFF_URL_EDITOR; ?>editorRobsonFarias.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo EMAIL_RFF_URL_EDITOR; ?>janMovEdiExc.css" />
 <style>
     .tabela tr td{
         padding: 10px;
@@ -434,29 +434,29 @@
     .breakTextLeft label {
         color: #000;
         /* background-image: url(https://dl.dropbox.com/s/yvzrr9o54s2llkr/uol.png); */
-        background-image: url(<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/alignMedia-breakText-left.svg);
+        background-image: url(<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/alignMedia-breakText-left.svg);
     }
 
     .breakTextCenter label {
         color: #000;
         /* background-image: url(https://dl.dropbox.com/s/yvzrr9o54s2llkr/uol.png); */
-        background-image: url(<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/alignMedia-breakText-center.svg);
+        background-image: url(<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/alignMedia-breakText-center.svg);
     }
 
     .breakTextRight label {
         color: #000;
         /* background-image: url(https://dl.dropbox.com/s/yvzrr9o54s2llkr/uol.png); */
-        background-image: url(<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/alignMedia-breakText-right.svg);
+        background-image: url(<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/alignMedia-breakText-right.svg);
     }
 
     .esquerda label {
         /* background-image: url(https://dl.dropbox.com/s/i4z39zy2mtb7xq1/paypal.png); */
-        background-image: url(<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/alignMedia-float-left.svg);
+        background-image: url(<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/alignMedia-float-left.svg);
     }
 
     .direita label {
         /* background-image: url(https://dl.dropbox.com/s/myj41602bom0g8p/bankslip.png); */
-        background-image: url(<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/alignMedia-float-right.svg);
+        background-image: url(<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/alignMedia-float-right.svg);
     }
 
     .payment-methods input:focus + label {
@@ -511,7 +511,7 @@
         border-radius: 8px;
         z-index: 10001;
         padding-top: 50px;
-        background-image: url('<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/arrastar.png');
+        background-image: url('<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/arrastar.png');
         background-size: 100% 8%;
         background-repeat: repeat-x;
     }
@@ -562,23 +562,23 @@
 
 <body>
     
-<script src="<?php echo POSTS_RFF_URL_EDITOR; ?>js/historyStack.js"></script>
+<script src="<?php echo EMAIL_RFF_URL_EDITOR; ?>js/historyStack.js"></script>
 <div id="editVideo" onmousedown="getEventDrag(this)">
     <table width="100%" onmousedown="removeDrag()">
         <tr style="margin">
-            <td width="50"><img src="<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/config-tam-width.svg" alt="Largura" title="Largura" width="100%" hieght="100%"></td>
+            <td width="50"><img src="<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/config-tam-width.svg" alt="Largura" title="Largura" width="100%" hieght="100%"></td>
             <td style="width: calc(100% - 50px);"><input type="number" name="larg" id="larg"></td>
         </tr>
         <tr>
-            <td width="50"><img src="<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/config-tam-height.svg" alt="Altura" title="Altura" width="100%" hieght="100%"></td>
+            <td width="50"><img src="<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/config-tam-height.svg" alt="Altura" title="Altura" width="100%" hieght="100%"></td>
             <td style="width: calc(100% - 50px);"><input type="number" name="alt" id="alt"></td>
         </tr>
         <tr>
-            <td width="50"><img src="<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/config-resource-alt.svg" alt="Recurso alt" title="Recurso alt" width="100%" hieght="100%"></td>
+            <td width="50"><img src="<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/config-resource-alt.svg" alt="Recurso alt" title="Recurso alt" width="100%" hieght="100%"></td>
             <td style="width: calc(100% - 50px);"><input type="text" name="resourceAlt" id="resourceAlt" title="Adicionar recurso de alt" alt="Adicionar recurso de alt"></td>
         </tr>
         <tr>
-            <td width="50"><img src="<?php echo POSTS_RFF_URL_EDITOR; ?>imgEditor/config-resource-title.svg" alt="Recurso title" title="Recurso title" width="100%" hieght="100%"></td>
+            <td width="50"><img src="<?php echo EMAIL_RFF_URL_EDITOR; ?>imgEditor/config-resource-title.svg" alt="Recurso title" title="Recurso title" width="100%" hieght="100%"></td>
             <td style="width: calc(100% - 50px);"><input type="text" name="resourceTitle" id="resourceTitle" title="Adicionar recurso de title" alt="Adicionar recurso de title"></td>
         </tr>
     </table>
@@ -656,9 +656,9 @@
         </div>
         <div id="listaEmotions">
             <?php
-                include_once(POSTS_RFF_DIR_EDITOR."class/list-file.class.php");
+                include_once(EMAIL_RFF_DIR_EDITOR."class/list-file.class.php");
                 $emotions = new ListFile();
-                $emotions->listFiles(POSTS_RFF_DIR_EDITOR.'icones');
+                $emotions->listFiles(EMAIL_RFF_DIR_EDITOR.'icones');
             ?>
         </div>
     </div>
@@ -667,8 +667,8 @@
 
 
 <?php
-    // include_once(POSTS_RFF_DIR_EDITOR."barra_ferramentas_original.php");
-    include_once(POSTS_RFF_DIR_EDITOR."barra_ferramentas_lucide.php");
+    // include_once(EMAIL_RFF_DIR_EDITOR."barra_ferramentas_original.php");
+    include_once(EMAIL_RFF_DIR_EDITOR."barra_ferramentas_lucide.php");
 ?>
 
 
@@ -683,6 +683,6 @@
         <div id="porcento"></div>
 
 <div id="scriptsImports"></div>
-<script src="<?php echo POSTS_RFF_URL_EDITOR; ?>js/editorRffGeral.js"></script>
+<script src="<?php echo EMAIL_RFF_URL_EDITOR; ?>js/editorRffGeral.js"></script>
 </body>
 </html>
