@@ -21,7 +21,6 @@ function email_rff_install(){
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         title varchar(200) NOT NULL,
         content TEXT NOT NULL,
-        itemType varchar(200),
         itemStatus varchar(20),
         category mediumint(9),
         PRIMARY KEY (id),

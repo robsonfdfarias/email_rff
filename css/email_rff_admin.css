@@ -1,0 +1,7 @@
+.btstatusTable{
+    cursor: pointer;
+}
+
+.btstatusTable:hover{
+    color:darkgreen;
+}
