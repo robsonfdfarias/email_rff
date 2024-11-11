@@ -330,7 +330,7 @@ function openWindowInsertImage(){
   }
   updateDirEditor();
   // window.open("rffeditor/windowInsertImage.php");
-  window.open(POSTS_RFF_DIR_EDITOR+"windowInsertImage.php", 'janela', 'top=50, left=100, scrollbar=no, fullscreen=no');
+  window.open(EMAIL_RFF_DIR_EDITOR+"windowInsertImage.php", 'janela', 'top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 function openWindowEditImage(img){
@@ -339,8 +339,8 @@ function openWindowEditImage(img){
   localStorage.setItem('endImg', img.src);
   localStorage.setItem('widImg', width);
   localStorage.setItem('heigImg', height);
-  // window.open(POSTS_RFF_DIR_EDITOR+"windowEditImage.php", 'janela', 'height=100%, width=100%, top=50, left=100, scrollbar=no, fullscreen=no');
-  window.open(POSTS_RFF_DIR_EDITOR+"windowEditImage.php", 'janela', 'top=50, left=100, scrollbar=no, fullscreen=no');
+  // window.open(EMAIL_RFF_DIR_EDITOR+"windowEditImage.php", 'janela', 'height=100%, width=100%, top=50, left=100, scrollbar=no, fullscreen=no');
+  window.open(EMAIL_RFF_DIR_EDITOR+"windowEditImage.php", 'janela', 'top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 function editImgNovo(width, height) {

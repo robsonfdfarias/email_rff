@@ -79,7 +79,7 @@ quadro.addEventListener('paste', function(event){
             div.children[i].removeAttribute('style')
             div2.append(div.children[i].cloneNode(true))
         }else{
-            div2.append(div.children[i].cloneNode(true))//.replace('url("imgs', 'url("'+POSTS_RFF_DIR_EDITOR+'/imgs')
+            div2.append(div.children[i].cloneNode(true))//.replace('url("imgs', 'url("'+EMAIL_RFF_DIR_EDITOR+'/imgs')
         }
     }
     div = div2
@@ -99,7 +99,7 @@ quadro.addEventListener('paste', function(event){
                 rangeOrigin.insertNode(r.cloneNode(true));
             }else{
                 let tag = document.createElement(r.nodeName.toLocaleLowerCase());
-                tag.innerHTML = r.innerHTML.replace('url("imgs', 'url("'+POSTS_RFF_DIR_EDITOR+'/imgs');
+                tag.innerHTML = r.innerHTML.replace('url("imgs', 'url("'+EMAIL_RFF_DIR_EDITOR+'/imgs');
                 rangeOrigin.insertNode(tag);
             }
         }
@@ -114,14 +114,14 @@ quadro.addEventListener('paste', function(event){
         if(paiOri.getAttribute('id')=='texto'){
             if(div.children[0].nodeName!='DIV'){
                 let divNew = document.createElement('div');
-                // divNew.innerHTML = div.innerHTML.replace('url("imgs', 'url("'+POSTS_RFF_DIR_EDITOR+'/imgs');
+                // divNew.innerHTML = div.innerHTML.replace('url("imgs', 'url("'+EMAIL_RFF_DIR_EDITOR+'/imgs');
                 for(let r=div.firstChild; r!=null; r=r.nextSibling){
                     if(r.nodeType===Node.TEXT_NODE){
                         divNew.append(document.createTextNode(r.textContent.replace('&nbsp;', ' ')));
                         // divNew.append(r.innerText);
                     }else{
                         let tag = document.createElement(r.nodeName.toLocaleLowerCase());
-                        tag.innerHTML = r.innerHTML.replace('url("imgs', 'url("'+POSTS_RFF_DIR_EDITOR+'/imgs');
+                        tag.innerHTML = r.innerHTML.replace('url("imgs', 'url("'+EMAIL_RFF_DIR_EDITOR+'/imgs');
                         divNew.append(tag)
                     }
                 }

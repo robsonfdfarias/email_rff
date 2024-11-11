@@ -71,13 +71,23 @@ function email_rff_admin_page(){
                     </p>
                     <input type="hidden" name="email_rff_id_form" id="email_rff_id_form">
                     <button type="submit" name="email_rff_bt_update" id="email_rff_bt_update" onclick="event.preventDefault(), emailRffSubmitForm(this)">Atualizar</button>
-                    <button type="submit" name="email_rff_bt_delete" id="email_rff_bt_delete" onclick="event.preventDefault(), emailRffSubmitForm(this)">Deletar</button>
                     <button type="submit" name="email_rff_bt_add" id="email_rff_bt_add" onclick="event.preventDefault(), emailRffSubmitForm(this)">Cadastrar</button>
                     <button type="submit" name="email_rff_bt_cancel" id="email_rff_bt_cancel" onclick="event.preventDefault(), emailRffCancel()">Cancelar</button>
+                    <button type="submit" name="email_rff_bt_open_delete" id="email_rff_bt_open_delete" onclick="event.preventDefault(), openDeleteEmail()" style="background-color:red;">Deletar</button>
+                    <div id="divDelItemRff" style="position:absolute;display:none;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.3);padding-top:30px;">
+                        <div id="divDelItemRffInto" style="position:relative; max-width:400px; margin:auto auto; border: 1px solid #cdcdcd; padding:40px;background-color:white;">
+                            <div style="font-size:2rem;line-height:2rem;font-weight:bold;">
+                                Tem certeza que deseja excluir o email?
+                            </div>
+                            <button type="submit" name="email_rff_bt_delete" id="email_rff_bt_delete" style="background-color:red;" onclick="event.preventDefault(), emailRffSubmitForm(this)">Deletar</button>
+                            <button type="submit" name="abortDeleteEmailRff" id="abortDeleteEmailRff" onclick="event.preventDefault(), cancelDeleteEmail()">Cancelar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
             <script>
-                //
+                localStorage.setItem("EMAIL_RFF_URL_EDITOR", document.getElementById('urlRff').innerHTML);
+                localStorage.setItem("EMAIL_RFF_DIR_EDITOR", document.getElementById('dirRff').innerHTML);
             </script>
 
                 <?php
@@ -121,6 +131,7 @@ function email_rff_admin_page(){
                         echo '<span id="'.$email['category']['id'].'">'.$email['category']['title'].'</span>';
                         echo '</td>';
                         echo '<td>';
+                        echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">Editar</a> | ';
                         echo '<a class="btstatusTable" onclick="openEditEmailRff(\'idEmail\', \''.$email['id'].'\')">'.$valueBt.'</a>';
                         echo '</td>';
                         echo '</tr>';

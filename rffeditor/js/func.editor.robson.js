@@ -22,9 +22,9 @@
     });
 })();
 
-var POSTS_RFF_DIR_EDITOR;
+var EMAIL_RFF_DIR_EDITOR;
 function updateDirEditor(){
-    POSTS_RFF_DIR_EDITOR = localStorage.getItem("POSTS_RFF_URL_EDITOR");
+    EMAIL_RFF_DIR_EDITOR = localStorage.getItem("EMAIL_RFF_URL_EDITOR");
 }
 
 
@@ -470,9 +470,9 @@ function openWindowLink(){
     if(tag.nodeName=='A'){
         localStorage.setItem('link', tag.getAttribute('href'))
         localStorage.setItem('target', tag.getAttribute('target'))
-        window.open(POSTS_RFF_DIR_EDITOR+'windowEditLink.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+        window.open(EMAIL_RFF_DIR_EDITOR+'windowEditLink.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
     }else{
-        window.open(POSTS_RFF_DIR_EDITOR+"windowInsertLink.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+        window.open(EMAIL_RFF_DIR_EDITOR+"windowInsertLink.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
     }
 }
 
@@ -1023,7 +1023,7 @@ function strategyTags(value){
                     40px 20px rgba(0, 0, 0, 0.1);`;
     let rffTextDegrade = 'font-size: 70px; font-weight: 900; letter-spacing: 4px; background-image: linear-gradient(to bottom, rebeccapurple, steelblue, turquoise); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: black; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: #adadad;';
     let rffEfeitoBGText = `
-        background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/bk2.png');
+        background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/bk2.png');
         background-size: cover;
         -webkit-text-fill-color: transparent;
         -webkit-animation: aitf 5s linear infinite;
@@ -1038,7 +1038,7 @@ function strategyTags(value){
         margin: 10px 0;
         font-weight: 900;
         border-image: 1px solid #ddd;`;
-    let rffEfeitoBGText2 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy2.webp');
+    let rffEfeitoBGText2 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy2.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1048,7 +1048,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText3 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy3.webp');
+    let rffEfeitoBGText3 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy3.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1058,7 +1058,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText4 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy4.webp');
+    let rffEfeitoBGText4 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy4.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1068,7 +1068,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText5 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy5.webp');
+    let rffEfeitoBGText5 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy5.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1078,7 +1078,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText6 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy6.webp');
+    let rffEfeitoBGText6 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy6.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1088,7 +1088,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText7 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy7.webp');
+    let rffEfeitoBGText7 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy7.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1098,7 +1098,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText8 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy8.webp');
+    let rffEfeitoBGText8 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy8.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1108,7 +1108,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText9 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy9.webp');
+    let rffEfeitoBGText9 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy9.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1118,7 +1118,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText10 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy10.webp');
+    let rffEfeitoBGText10 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy10.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1128,7 +1128,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText11 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy11.webp');
+    let rffEfeitoBGText11 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy11.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1138,7 +1138,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText12 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy12.webp');
+    let rffEfeitoBGText12 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy12.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1148,7 +1148,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText13 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy13.webp');
+    let rffEfeitoBGText13 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy13.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1158,7 +1158,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText14 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy14.webp');
+    let rffEfeitoBGText14 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy14.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1168,7 +1168,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText15 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/giphy15.webp');
+    let rffEfeitoBGText15 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/giphy15.webp');
         background-size: cover;
         background-position: center;
         color: transparent;
@@ -1179,7 +1179,7 @@ function strategyTags(value){
         margin: 10px 0;
         font-weight: 900;`;
     let rffEfeitoBGText16 = `
-        background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/bkVertical.png');
+        background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/bkVertical.png');
         background-size: cover;
         -webkit-text-fill-color: transparent;
         -webkit-animation: aitf16 20s linear infinite;
@@ -1193,7 +1193,7 @@ function strategyTags(value){
         font-size: 50px;
         margin: 10px 0;
         font-weight: 900;`;
-    let rffEfeitoBGText17 = `background-image: url('${POSTS_RFF_DIR_EDITOR}imgs/bk.png');
+    let rffEfeitoBGText17 = `background-image: url('${EMAIL_RFF_DIR_EDITOR}imgs/bk.png');
         background-size: cover;
         -webkit-text-fill-color: transparent;
         -webkit-animation: aitf 35s linear infinite;
@@ -1306,8 +1306,8 @@ function insertTable() {
         return;
     }
     updateDirEditor();
-    console.log(POSTS_RFF_DIR_EDITOR+"windowInsertTable.php")
-    window.open(POSTS_RFF_DIR_EDITOR+"windowInsertTable.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+    console.log(EMAIL_RFF_DIR_EDITOR+"windowInsertTable.php")
+    window.open(EMAIL_RFF_DIR_EDITOR+"windowInsertTable.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 var styleFirstColumn = 'width: 10px !important; background-color: #cdcdcd; resize: vertical !important; overflow: auto; box-sizing: border-box;';
@@ -1325,48 +1325,48 @@ function insertTableNovo(numRow, numCol) {
     var table ='<div class="configTable" contenteditable="false" spellcheck="false">'
     // table+='<button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="rffeditor/imgEditor/mesclar-celula.svg" width="50" title="Opções de mesclagem"></button>';
     table+='<ul id="menuTable">';
-    table+='<li><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/mesclar-celula.svg" height="40" title="Opções de mesclagem">';
+    table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-celula.svg" height="40" title="Opções de mesclagem">';
     table+='<ul>';
-    table+='<li><button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/mesclar-lado.svg" height="40" title="Mesclar célula a direita"></button></li>';
-    table+='<li><button id="testeSel" onclick="merge(\'column\', \'add\')"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/mesclar-abaixo.svg" height="40" title="Mesclar célula abaixo"></button></li>';
-    table+='<li><button id="testeSel" onclick="merge(\'row\', \'remove\')"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/mesclar-remover-lado.svg" height="40" title="Remove mesclagem a direita"></button></li>';
-    table+='<li><button id="testeSel" onclick="merge(\'column\', \'remove\')"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/mesclar-remover-abaixo.svg" height="40" title="Remover mesclagem abaixo"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-lado.svg" height="40" title="Mesclar célula a direita"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'column\', \'add\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-abaixo.svg" height="40" title="Mesclar célula abaixo"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'row\', \'remove\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-remover-lado.svg" height="40" title="Remove mesclagem a direita"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'column\', \'remove\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-remover-abaixo.svg" height="40" title="Remover mesclagem abaixo"></button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configRow.svg" height="40" title="Configuração de linha">';
+    table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configRow.svg" height="40" title="Configuração de linha">';
     table+='<ul>';
-    table+='<li><button id="testeSel" onclick="insertTrAfter()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/inserttableRowAfter.svg" height="40" title="Inserir linha depois"></li>';
-    table+='<li><button id="testeSel" onclick="insertTrBefore()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/inserttableRowBefore.svg" height="40" title="Inserir linha antes"></li>';
-    table+='<li><button id="testeSel" onclick="delTr()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/deleteTableRowAfter.svg" height="40" title="Apagar linha"></li>';
+    table+='<li><button id="testeSel" onclick="insertTrAfter()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableRowAfter.svg" height="40" title="Inserir linha depois"></li>';
+    table+='<li><button id="testeSel" onclick="insertTrBefore()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableRowBefore.svg" height="40" title="Inserir linha antes"></li>';
+    table+='<li><button id="testeSel" onclick="delTr()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/deleteTableRowAfter.svg" height="40" title="Apagar linha"></li>';
     // table+='<li><button id="testeSel" onclick="insertTrAfter()">Inserir linha depois</button></li>';
     // table+='<li><button id="testeSel" onclick="insertTrBefore()">Inserir linha antes</button></li>';
     // table+='<li><button id="testeSel" onclick="delTr()">Apagar linha</button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configColumn.svg" height="40" title="Configuração de coluna">';
+    table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configColumn.svg" height="40" title="Configuração de coluna">';
     table+='<ul>';
-    table+='<li><button id="testeSel" onclick="insertTdAfter()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/inserttableColumnAfter.svg" height="40" title="Inserir coluna depois"></button></li>';
-    table+='<li><button id="testeSel" onclick="insertTdBefore()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/inserttableColumnBefore.svg" height="40" title="Inserir coluna antes"></button></li>';
-    table+='<li><button id="testeSel" onclick="delTd()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/deleteTableColumn.svg" height="40" title="Apagar coluna"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertTdAfter()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableColumnAfter.svg" height="40" title="Inserir coluna depois"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertTdBefore()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableColumnBefore.svg" height="40" title="Inserir coluna antes"></button></li>';
+    table+='<li><button id="testeSel" onclick="delTd()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/deleteTableColumn.svg" height="40" title="Apagar coluna"></button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configCell.svg" height="40" title="Configurar célula">';
+    table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell.svg" height="40" title="Configurar célula">';
     table+='<ul>';
     // table+='<li><button id="testeSel" onclick="rotateTdSel(\'sc\')"><img src="rffeditor/imgEditor/configCell-rotate-text.svg" height="40" title="Rotacionar o texto na célula"></button></li>';
     // table+='<li><button id="testeSel" onclick="getWindowBckgroundColorTDsel()"><img src="rffeditor/imgEditor/configCell-background.svg" height="40" title="Mudar a cor da célula"></button></li>';
     // table+='<li><button id="testeSel" onclick="openConfigBorderTdSel()"><img src="rffeditor/imgEditor/configCell-border.svg" height="40" title="Configurar borda da célula"></button></li>';
-    table+='<li><button id="testeSel" onclick="openConfigTdSel()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configCell-prop.svg" height="40" title="Configurar propriedade da célula"></button></li>';
+    table+='<li><button id="testeSel" onclick="openConfigTdSel()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-prop.svg" height="40" title="Configurar propriedade da célula"></button></li>';
 
-    table+='<li><button id="testeSel" onclick="insertCellRight()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configCell-insert-after.svg" height="40" title="Inserir célula depois"></button></li>';
-    table+='<li><button id="testeSel" onclick="insertCellLeft()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configCell-insert-before.svg" height="40" title="Inserir célula antes"></button></li>';
-    table+='<li><button id="testeSel" onclick="removeCell()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configCell-delete.svg" height="40" title="Apagar célula"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertCellRight()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-insert-after.svg" height="40" title="Inserir célula depois"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertCellLeft()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-insert-before.svg" height="40" title="Inserir célula antes"></button></li>';
+    table+='<li><button id="testeSel" onclick="removeCell()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-delete.svg" height="40" title="Apagar célula"></button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()"><img src="'+POSTS_RFF_DIR_EDITOR+'imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
+    table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
     table+='</ul>';
     table+='<button onclick="fecharJanTab(this)" draggable="false" droppable="false">X</button>';
     table+='</div>';
@@ -2091,7 +2091,7 @@ function verifyElementFocus(){
 
 function getWindowBckgroundColorTDsel(){
     updateDirEditor();
-    window.open(POSTS_RFF_DIR_EDITOR+"windowColorBackGroundTD.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+    window.open(EMAIL_RFF_DIR_EDITOR+"windowColorBackGroundTD.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 function backGroundColorTdSel(cor){
@@ -2115,7 +2115,7 @@ function openConfigTdSel(){
     if(tdSel.length>0){
         let style = tdSel[0].getAttribute('style');
         localStorage.setItem('style', style);
-        window.open(POSTS_RFF_DIR_EDITOR+'windowConfigBorderCell.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+        window.open(EMAIL_RFF_DIR_EDITOR+'windowConfigBorderCell.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
     }else{
         alert('Nenhuma célula selecionada! Para selecionar uma célula, segure a tecla CTRL e clique em cima da célula, com isso aparecerá uma cor de seleção nela!')
     }
@@ -2221,7 +2221,7 @@ function openWindowConfigBackgroundTable(){
         //     }
         // }
         localStorage.setItem('style', table.getAttribute('style'));
-        window.open(POSTS_RFF_DIR_EDITOR+'windowConfigTable.php', 'janela', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,height=350,width=500,top=50,left=100,fullscreen=no');
+        window.open(EMAIL_RFF_DIR_EDITOR+'windowConfigTable.php', 'janela', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,height=350,width=500,top=50,left=100,fullscreen=no');
 
         saveState();
     }else{
@@ -2249,7 +2249,7 @@ function openWindowInsertVideo(){
         return;
     }
     updateDirEditor();
-    window.open(POSTS_RFF_DIR_EDITOR+"windowInsertVideo.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+    window.open(EMAIL_RFF_DIR_EDITOR+"windowInsertVideo.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 // function insertVideo(codVideo, si, width, height) {
@@ -2283,10 +2283,11 @@ function insertVideo(codVideo, si, width, height) {
     divPai.setAttribute('ondragover', 'allowDrop2(event)');
     divPai.setAttribute('contenteditable', 'false');
     divPai.setAttribute('style', 'width:'+width+'; height:'+height+';');
-    divPai.setAttribute('onmouseout', "videoOut(this)")
-    divPai.addEventListener('mouseover', function(){
-        videoOver(this);
-    }, true);
+    divPai.setAttribute('onmouseout', "videoOut(this)");
+    divPai.setAttribute('onmouseover', "videoOver(this)");
+    // divPai.addEventListener('mouseover', function(){
+    //     videoOver(this);
+    // }, true);
     let mediaAndCaption = document.createElement('div');
     mediaAndCaption.setAttribute('id', 'mediaAndCaption');
     mediaAndCaption.setAttribute('draggable', 'false');
@@ -2856,7 +2857,7 @@ function alterLineHeight(content){
 
 function openPasteContentOfWeb(){
     updateDirEditor();
-    window.open(POSTS_RFF_DIR_EDITOR+'windowPasteContentOfWeb.php', 'janela', 'height=550, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+    window.open(EMAIL_RFF_DIR_EDITOR+'windowPasteContentOfWeb.php', 'janela', 'height=550, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 function convertPToDiv(tag){

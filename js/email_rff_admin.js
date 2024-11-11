@@ -23,8 +23,18 @@ function emailRffCancel(){
 }
 function emailRffNewEmail(){
     if(emailRffDivForm){
+        document.getElementById('email_rff_bt_add').style.display='inline';
+        document.getElementById('email_rff_bt_delete').style.display='none';
+        document.getElementById('email_rff_bt_update').style.display='none';
         emailRffDivForm.style.display='block';
     }
+}
+
+function openDeleteEmail(){
+    document.getElementById('divDelItemRff').style.display='block';
+}
+function cancelDeleteEmail(){
+    document.getElementById('divDelItemRff').style.display='none';
 }
 
 function openEditEmailRff(varName, value){
@@ -37,6 +47,9 @@ if(document.getElementById('email_rff_item_data')){
     getVarEditEmailRff();
 }
 function getVarEditEmailRff(){
+    document.getElementById('email_rff_bt_add').style.display='none';
+    document.getElementById('email_rff_bt_delete').style.display='inline';
+    document.getElementById('email_rff_bt_update').style.display='inline';
     let dt = document.getElementById('email_rff_item_data').innerText;
     let data;
     try{

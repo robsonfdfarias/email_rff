@@ -9,12 +9,13 @@
     <!--<div id="preview" style="max-width:800px;">-</div>
     <div id="lista" style="max-width:800px;align-items: center; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;"></div>-->
     <div id="lista" style="max-width:100%;  background-color: white; padding:20px; height: 93%;"></div>
-
     <script>
-        var dirEditor = localStorage.getItem('POSTS_RFF_DIR_EDITOR');
+        var dirEditor = localStorage.getItem('EMAIL_RFF_DIR_EDITOR');
+        console.log(localStorage.getItem('EMAIL_RFF_DIR_EDITOR'))
+        console.log(dirEditor)
         dirEditor = dirEditor.replace('rffeditor/', '');
         var folder = dirEditor+'imagens';
-        var urlFiles = localStorage.getItem('POSTS_RFF_URL_EDITOR');
+        var urlFiles = localStorage.getItem('EMAIL_RFF_URL_EDITOR');
         function getListFiles(files){
             const xhttp = new XMLHttpRequest();
             xhttp.onload=function(){
