@@ -18,8 +18,10 @@ class EmailRffDBEmailController{
         if(isset($_POST['email_rff_bt_update'])){
             $id = $this->tools->checkIfPostVarEmpty($_POST['email_rff_id_form']);
             $title = $this->tools->checkIfPostVarEmpty($_POST['email_rff_title']);
-            $content = $this->tools->checkIfPostVarEmpty($_POST['email_rff_content']);
+            // $content = $this->tools->checkIfPostVarEmpty($_POST['email_rff_content']);
+            $content = $this->tools->clear($_POST['email_rff_content']);
             $category = $this->tools->checkIfPostVarEmpty($_POST['email_rff_category']);
+            // echo '<h1>ID: '.$id.'<br>Title: '.$title.'<br>Content: '.$content.'<br>Categoria: '.$category.'<br></h1>';
             $itemStatus = "Aguardando";
             $res = $this->db->updateEmail($id, $title, $content, $itemStatus, $category);
             if($res<=0 || $res==false){
@@ -39,8 +41,10 @@ class EmailRffDBEmailController{
         }
         if(isset($_POST['email_rff_bt_add'])){
             $title = $this->tools->checkIfPostVarEmpty($_POST['email_rff_title']);
-            $content = $this->tools->checkIfPostVarEmpty($_POST['email_rff_content']);
+            // $content = $this->tools->checkIfPostVarEmpty($_POST['email_rff_content']);
+            $content = $this->tools->clear($_POST['email_rff_content']);
             $category = $this->tools->checkIfPostVarEmpty($_POST['email_rff_category']);
+            // echo '<h1>ID: '.$id.'<br>Title: '.$title.'<br>Content: '.$content.'<br>Categoria: '.$category.'<br></h1>';
             $itemStatus = "Aguardando";
             $res = $this->db->insertEmail($title, $content, $itemStatus, $category);
             if($res<=0 || $res==false){

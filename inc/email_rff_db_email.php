@@ -38,14 +38,14 @@ class EmailRffDBEmail{
         foreach($res as $item){
             $cat = $this->db_categ->getCatById($item['category']);
             $itemAr = '{
-                "id": '.$item['id'].',
-                "title": '.$item['title'].',
-                "content": '.$item['content'].',
-                "itemStatus": '.$item['itemStatus'].',
+                "id": "'.$item['id'].'",
+                "title": "'.$item['title'].'",
+                "content": "<div id="email_rff_conteudo_div">'.$item['content'].'</div>",
+                "itemStatus": "'.$item['itemStatus'].'",
                 "category": {
-                    "id": '.$cat['id'].',
-                    "title": '.$cat['title'].',
-                    "statusItem": '.$cat['statusItem'].',
+                    "id": "'.$cat['id'].'",
+                    "title": "'.$cat['title'].'",
+                    "statusItem": "'.$cat['statusItem'].'"
                 }
             }';
         }

@@ -25,9 +25,13 @@ add_action('admin_menu', 'add_menu_admin_page_email_rff');
 if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_email_controller.php")){
     include_once(EMAIL_RFF_CORE_INC."email_rff_db_email_controller.php");
 }
+if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_cat_controller.php")){
+    include_once(EMAIL_RFF_CORE_INC."email_rff_db_cat_controller.php");
+}
 
 function email_rff_admin_page(){
     emailRffCreateFolderIfNotExists();
+    $emailRffDBCategController = new EmailRffDBCategController();
     $emailRffDBEmailController = new EmailRffDBEmailController();
     $emailRffDBEmailController->actionOnSubmitForm();
     if(isset($_GET['idEmail'])){
@@ -53,28 +57,27 @@ function email_rff_admin_page(){
                     include_once(EMAIL_RFF_DIR_EDITOR."editText2.php");
                 ?>
                 <form method="post" name="email_rff_formulario" id="email_rff_formulario">
-                    <textarea name="email_rff_content" id="email_rff_content" cols="30" rows="10" style="display:none;" required></textarea>
+                    <textarea name="email_rff_content" id="email_rff_content" style="display:none;" required></textarea>
                     <p>
                         <input type="text" name="email_rff_title" id="email_rff_title" placeholder="Título" style="width:100%;" required>
                     </p>
                     <p>
                         <label for="email_rff_category">Selecione a categoria: </label>
                         <select name="email_rff_category" id="email_rff_category" required>
-                            <option value="val">val</option>
+                            <?php
+                                $emailRffDBCategController->getAllCategInOptions();
+                            ?>
                         </select>
                     </p>
                     <input type="hidden" name="email_rff_id_form" id="email_rff_id_form">
-                    <button type="submit" name="email_rff_bt_update" id="email_rff_bt_update" onclick="emailRffSubmitForm(this)">Atualizar</button>
-                    <button type="submit" name="email_rff_bt_delete" id="email_rff_bt_delete" onclick="emailRffSubmitForm(this)">Deletar</button>
-                    <button type="submit" name="email_rff_bt_add" id="email_rff_bt_add" onclick="emailRffSubmitForm(this)">Cadastrar</button>
+                    <button type="submit" name="email_rff_bt_update" id="email_rff_bt_update" onclick="event.preventDefault(), emailRffSubmitForm(this)">Atualizar</button>
+                    <button type="submit" name="email_rff_bt_delete" id="email_rff_bt_delete" onclick="event.preventDefault(), emailRffSubmitForm(this)">Deletar</button>
+                    <button type="submit" name="email_rff_bt_add" id="email_rff_bt_add" onclick="event.preventDefault(), emailRffSubmitForm(this)">Cadastrar</button>
                     <button type="submit" name="email_rff_bt_cancel" id="email_rff_bt_cancel" onclick="event.preventDefault(), emailRffCancel()">Cancelar</button>
                 </form>
             </div>
             <script>
-                if(document.getElementById('email_rff_item_data')){
-                    let bt = document.createElement('a');
-                    getVarEditEmailRff();
-                }
+                //
             </script>
 
                 <?php
@@ -109,7 +112,7 @@ function email_rff_admin_page(){
                         echo $email['id'];
                         echo '</td>';
                         echo '<td>';
-                        echo $email['title'];
+                        echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">'.$email['title'].'</a>';
                         echo '</td>';
                         echo '<td>';
                         echo emailRffFormatStatus($email['itemStatus']);

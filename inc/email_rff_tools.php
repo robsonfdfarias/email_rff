@@ -9,4 +9,8 @@ class EmailRffTools{
             return sanitize_text_field($var);
         }
     }
+    function clear($var){
+        $var = str_replace('\"', '"', $var);
+        return $var;
+    }
 }
