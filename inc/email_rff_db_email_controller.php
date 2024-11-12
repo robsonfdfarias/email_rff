@@ -61,4 +61,51 @@ class EmailRffDBEmailController{
         $id = $this->tools->checkIfPostVarEmpty($id);
         return $this->db->getEmailById($id);
     }
+    function displayTable(){
+        $arr = $this->getAllEmails();
+        echo '<table class="wp-list-table widefat fixed striped" style="table-layout: auto !important;">
+                <tr>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        Título
+                    </td>
+                    <td>
+                        Status
+                    </td>
+                    <td>
+                        Categoria
+                    </td>
+                    <td>
+                        Ação
+                    </td>
+                </tr>';
+        foreach($arr as $email){
+            if($email['itemStatus']=="Enviado"){
+                $valueBt = "Reenviar";
+            }else{
+                $valueBt = "Enviar";
+            }
+            echo '<tr>';
+            echo '<td>';
+            echo $email['id'];
+            echo '</td>';
+            echo '<td>';
+            echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">'.$email['title'].'</a>';
+            echo '</td>';
+            echo '<td>';
+            echo emailRffFormatStatus($email['itemStatus']);
+            echo '</td>';
+            echo '<td>';
+            echo '<span id="'.$email['category']['id'].'">'.$email['category']['title'].'</span>';
+            echo '</td>';
+            echo '<td>';
+            echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">Editar</a> | ';
+            echo '<a class="btstatusTable" onclick="openEditEmailRff(\'idEmail\', \''.$email['id'].'\')">'.$valueBt.'</a>';
+            echo '</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
 }

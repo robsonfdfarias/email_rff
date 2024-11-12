@@ -5,3 +5,32 @@
 .btstatusTable:hover{
     color:darkgreen;
 }
+
+.btCloseEmailRff{
+    position:absolute;
+    padding:8px 10px;
+    background-color:rgb(255, 70, 70);
+    font-size:1.3rem;
+    right:10px;
+    top:70px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+.btCloseEmailRff:hover {
+    background-color: rgb(255, 98, 98);
+    box-shadow: 0 0 2px 2px red;
+    transition: all ease-in-out 0.3s;
+}
+
+.btsubmitEmailRff{
+    margin-right: 5px;
+}
+
+.btEmailRffDel{
+    background-color: rgb(247, 58, 58);
+}
+.btEmailRffDel:hover {
+    background-color: rgb(207, 1, 1);
+}

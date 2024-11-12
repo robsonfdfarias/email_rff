@@ -23,6 +23,8 @@ function email_rff_install(){
         content TEXT NOT NULL,
         itemStatus varchar(20),
         category mediumint(9),
+        criationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+        sendingDate varchar(200),
         PRIMARY KEY (id),
         FOREIGN KEY (category) REFERENCES $table_categ(id) ON DELETE CASCADE
     ) $charset_collate;";

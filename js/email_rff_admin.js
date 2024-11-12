@@ -1,11 +1,38 @@
 var adminURL = new EmailRffAdminGetUrl();
 function emailRffSubmitForm(bt){
+    let title = document.getElementById('email_rff_title');
+    let categ = document.getElementById('email_rff_category');
+    if(title==null || title.value==""){
+        alert('O campo Título não pode ficar vazio.');
+        return;
+    }
+    if(categ==null || categ.value==""){
+        alert('O campo Categoria não pode ficar vazio. Se não houver categoria disponível, inserira uma categoria. para inserir, clique em Cancelar->Categorias->Criar categorias.');
+        return;
+    }
     let email_rff_formulario = document.getElementById('email_rff_formulario');
     if(email_rff_formulario){
         adminURL.removeUrlParameter('idEmail');
         let texto = document.getElementById('texto').innerHTML;
         let textArea = document.getElementById('email_rff_content');
         textArea.innerHTML = texto;
+        var inputHidden = document.createElement('input');
+        inputHidden.type = 'hidden';
+        inputHidden.name = bt.id;
+        inputHidden.value = bt.id; 
+        email_rff_formulario.appendChild(inputHidden);
+        email_rff_formulario.submit();
+    }
+}
+function emailRffSubmitFormCateg(bt){
+    let title = document.getElementById('email_rff_cat_title');
+    if(title==null || title.value==""){
+        alert('O campo Título não pode ficar vazio.');
+        return;
+    }
+    let email_rff_formulario = document.getElementById('formCategEmailRff');
+    if(email_rff_formulario){
+        adminURL.removeUrlParameter('idCateg');
         var inputHidden = document.createElement('input');
         inputHidden.type = 'hidden';
         inputHidden.name = bt.id;
@@ -74,5 +101,77 @@ function getVarEditEmailRff(){
     category.appendChild(option);
     if(emailRffDivForm){
         emailRffDivForm.style.display='block';
+    }
+}
+
+verifyOpenDivAdminCategEmailRff();
+function verifyOpenDivAdminCategEmailRff(){
+    if(adminURL.verifyVarUrl('adminCat')){
+        document.getElementById('divAdminCategEmailRff').style.display = 'block';
+    }else{
+        document.getElementById('divAdminCategEmailRff').style.display = 'none';
+    }
+}
+
+function openAdminCategEmailRff(varName, value){
+    adminURL.addUrlParameter(varName, value);
+    // location.reload();
+    document.getElementById('divAdminCategEmailRff').style.display = 'block';
+}
+
+function closeAdminCategEmailRff(){
+    adminURL.removeUrlParameter('adminCat');
+    document.getElementById('divAdminCategEmailRff').style.display = 'none';
+}
+
+function openFormCategEmailRff(){
+    document.getElementById('email_rff_categ_bt_add').style.display = 'inline';
+    document.getElementById('email_rff_categ_bt_update').style.display = 'none';
+    document.getElementById('email_rff_categ_bt_delete').style.display = 'none';
+    document.getElementById('divFormCategEmailRff').style.display = 'block';
+}
+
+function closeFormCategEmailRff(){
+    adminURL.removeUrlParameter('idCateg');
+    document.getElementById('divFormCategEmailRff').style.display = 'none';
+}
+
+function editCategFormEmailRff(varName, value){
+    adminURL.addUrlParameter(varName, value);
+    location.reload();
+}
+
+function openEditCatFormEmailRff(){
+    document.getElementById('email_rff_categ_bt_add').style.display = 'none';
+    document.getElementById('email_rff_categ_bt_update').style.display = 'inline';
+    document.getElementById('email_rff_categ_bt_delete').style.display = 'inline';
+    document.getElementById('divFormCategEmailRff').style.display = 'block';
+    let divDataCateg = document.getElementById('email_rff_categ_data');
+    if(divDataCateg){
+        let json;
+        try{
+            json = JSON.parse(divDataCateg.innerHTML);
+            let id = document.getElementById('email_rff_cat_id');
+            let title = document.getElementById('email_rff_cat_title');
+            let statusItem = document.getElementById('email_rff_cat_status');
+            id.value = json.id;
+            title.value = json.title;
+            let option = document.createElement('option');
+            option.value = json.statusItem;
+            option.textContent = 'Atual -> '+json.statusItem;
+            option.selected = true;
+            statusItem.append(option);
+        }catch(error){
+            json = '';
+            console.log('Erro encontrado: '+error);
+        }
+    }
+}
+
+verifyOpenDivFormCategEmailRff();
+function verifyOpenDivFormCategEmailRff(){
+    if(adminURL.verifyVarUrl('idCateg')){
+        openEditCatFormEmailRff();
+        document.getElementById('divFormCategEmailRff').style.display = 'block';
     }
 }

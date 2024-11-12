@@ -34,11 +34,19 @@ function email_rff_admin_page(){
     $emailRffDBCategController = new EmailRffDBCategController();
     $emailRffDBEmailController = new EmailRffDBEmailController();
     $emailRffDBEmailController->actionOnSubmitForm();
+    $emailRffDBCategController->actionOnSubmitForm();
     if(isset($_GET['idEmail'])){
         // echo 'ID do email encontrado: '.$_GET['idEmail'];
         $item = $emailRffDBEmailController->getEmailById($_GET['idEmail']);
         echo '<div id="email_rff_item_data" style="display:none;">'.$item.'</div>';
     }
+    if(isset($_GET['idCateg'])){
+        // echo 'ID do email encontrado: '.$_GET['idEmail'];
+        $item = $emailRffDBCategController->getCatById($_GET['idCateg']);
+        echo '<div id="email_rff_categ_data" style="display:none;">'.$item.'</div>';
+    }
+    $emailRffDBCategController->displayTable();
+    $emailRffDBCategController->displayFormCateg();
     ?>
     <div id="wrap">
         <div class="tab">
@@ -49,7 +57,7 @@ function email_rff_admin_page(){
         </div>
         <div id="content" style="background:white; min-height:80vh; padding:20px;">
             <a onclick="emailRffNewEmail()" class="page-title-action">Criar novo email</a>
-            <a onclick="emailRffNewEmail()" class="page-title-action">Categorias</a>
+            <a onclick="openAdminCategEmailRff('adminCat', 'open')" class="page-title-action">Categorias</a>
             
             <div id="emailRffDivForm" style="position:absolute; width:98%; height:90vh; display:none; flex-direction:column; padding: 20px; top:0;left:0; background-color: #fff; margin-left:-20px; z-index:1000;">
                 <h1 id="formTituloEmailRff">Você está na new</h1>
@@ -89,54 +97,8 @@ function email_rff_admin_page(){
                 localStorage.setItem("EMAIL_RFF_URL_EDITOR", document.getElementById('urlRff').innerHTML);
                 localStorage.setItem("EMAIL_RFF_DIR_EDITOR", document.getElementById('dirRff').innerHTML);
             </script>
-
                 <?php
-                    $arr = $emailRffDBEmailController->getAllEmails();
-                    // echo '<pre>'.print_r($arr, true).'</pre>';
-                    echo '<table class="wp-list-table widefat fixed striped" style="table-layout: auto !important;">
-                        <tr>
-                            <td>
-                                ID
-                            </td>
-                            <td>
-                                Título
-                            </td>
-                            <td>
-                                Status
-                            </td>
-                            <td>
-                                Categoria
-                            </td>
-                            <td>
-                                Ação
-                            </td>
-                        </tr>';
-                    foreach($arr as $email){
-                        if($email['itemStatus']=="Enviado"){
-                            $valueBt = "Reenviar";
-                        }else{
-                            $valueBt = "Enviar";
-                        }
-                        echo '<tr>';
-                        echo '<td>';
-                        echo $email['id'];
-                        echo '</td>';
-                        echo '<td>';
-                        echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">'.$email['title'].'</a>';
-                        echo '</td>';
-                        echo '<td>';
-                        echo emailRffFormatStatus($email['itemStatus']);
-                        echo '</td>';
-                        echo '<td>';
-                        echo '<span id="'.$email['category']['id'].'">'.$email['category']['title'].'</span>';
-                        echo '</td>';
-                        echo '<td>';
-                        echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">Editar</a> | ';
-                        echo '<a class="btstatusTable" onclick="openEditEmailRff(\'idEmail\', \''.$email['id'].'\')">'.$valueBt.'</a>';
-                        echo '</td>';
-                        echo '</tr>';
-                    }
-                    echo '</table>';
+                    $emailRffDBEmailController->displayTable();
                 ?>
             </div>
         </div>
