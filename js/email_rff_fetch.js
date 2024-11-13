@@ -37,12 +37,6 @@ class EmailRffFetch{
         function sendNext(){
             if(index<emails.length){
                 const email = emails[index];
-                console.log(email);
-                console.log(emailUser);
-                console.log(rffSubjectEmail.innerHTML);
-                console.log(rffContentEmail.innerHTML);
-                console.log(dir);
-                console.log('--------------------------');
                 fetch(url, {
                     method:'POST',
                     headers: {
@@ -52,8 +46,7 @@ class EmailRffFetch{
                         emails: email,
                         emailUser: emailUser,
                         subject: rffSubjectEmail.innerHTML,
-                        content: rffContentEmail.innerHTML,
-                        url: dir
+                        content: rffContentEmail.innerHTML
                     })
                 })
                 .then(response => response.json())
@@ -66,7 +59,7 @@ class EmailRffFetch{
                 })
                 .finally(()=>{
                     index++;
-                    setTimeout(sendNext, 500);
+                    setTimeout(sendNext, 300);
                 })
             }
         }

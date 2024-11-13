@@ -19,9 +19,9 @@ class EmailRffSendEmail{
 
         // Enviando o e-mail
         if(mail($to, $subject, $message, $headers)) {
-            echo "-> <span style='color:green;'>E-mail HTML enviado com sucesso para</span>: ".$to.'<br>';
+            return "-> <span style='color:green;'>E-mail HTML enviado com sucesso para</span>: ".$to.'<br>';
         } else {
-            echo "-> <span style='color:red;'>Falha ao enviar o e-mail para</span>: ".$to.'<br>';
+            return "-> <span style='color:red;'>Falha ao enviar o e-mail para</span>: ".$to.'<br>';
         }
     }
 }

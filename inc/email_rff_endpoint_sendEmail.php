@@ -10,19 +10,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $emails = $data['emails'];
         $subject = $data['subject'];
         $content = $data['content'];
-        $result = [];
-        foreach($emails as $email){
-            $result[] = $toolsSendEmail->sendEmail($content, $subject, $email);
-        }
-        // echo json_encode($content);
+        $result = $toolsSendEmail->sendEmail($content, $subject, $email);
         echo json_encode($result);
         
     }else{
-        echo json_encode('Classe de envio de email não encontrada. '.$data['url']."email_rff_send_email.php");
+        echo json_encode('Classe de envio de email não encontrada. ');
     }
 }else{
     echo json_encode('Método de requisição não autorizado.');
 }
-
-
-// echo json_encode('Método de requisição não autorizado.');
