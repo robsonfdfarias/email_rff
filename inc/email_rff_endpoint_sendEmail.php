@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $emails = $data['emails'];
         $subject = $data['subject'];
         $content = $data['content'];
-        $result = $toolsSendEmail->sendEmail($content, $subject, $email);
+        $result = $toolsSendEmail->sendEmail($content, $subject, $emails);
         echo json_encode($result);
         
     }else{
