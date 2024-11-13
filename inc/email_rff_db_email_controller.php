@@ -61,6 +61,10 @@ class EmailRffDBEmailController{
         $id = $this->tools->checkIfPostVarEmpty($id);
         return $this->db->getEmailById($id);
     }
+    function getEmailByIdArray($id){
+        $id = $this->tools->checkIfPostVarEmpty($id);
+        return $this->db->getEmailByIdArray($id);
+    }
     function displayTable(){
         $arr = $this->getAllEmails();
         echo '<table class="wp-list-table widefat fixed striped" style="table-layout: auto !important;">
@@ -102,7 +106,7 @@ class EmailRffDBEmailController{
             echo '</td>';
             echo '<td>';
             echo '<a onclick="openEditEmailRff(\'idEmail\', '.$email['id'].')" style="cursor:pointer;">Editar</a> | ';
-            echo '<a class="btstatusTable" onclick="openEditEmailRff(\'idEmail\', \''.$email['id'].'\')">'.$valueBt.'</a>';
+            echo '<a class="btstatusTable" onclick="openEditEmailRff(\'idEmailSend\', \''.$email['id'].'\')">'.$valueBt.'</a>';
             echo '</td>';
             echo '</tr>';
         }

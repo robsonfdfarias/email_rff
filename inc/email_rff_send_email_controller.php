@@ -1,24 +1,26 @@
 <?php
 
-if(file_exists(EMAIL_RFF_CORE_INC."email_rff_send_email.php")){
-    include_once(EMAIL_RFF_CORE_INC."email_rff_send_email.php");
-}
-
 class EmailRffSendEmailController{
-    private $sendEmail;
+    private $emailUser;
     function __construct(){
         $current_user = wp_get_current_user();
-        $this->sendEmail = new EmailRffSendEmail($current_user->user_email);
+        $this->emailUser = $current_user->user_email;
     }
-    function sendEmailForList($listEmail, $content, $subject){
-        if(count($listEmail)>0){
-            foreach($listEmail as $email){
-                $this->sendEmail->sendEmail($content, $subject, $email);
-                usleep(100000);//espera 100 milisegundos
-            }
-        }
-    }
-    function displaySendEmail($listEmail, $content, $subject){
-        //
+    function displaySendEmail($content, $subject){
+        $div = '<div class="emailRffDivSendEmail">';
+        $div .= '<h1>Envio de e-mail</h1>';
+        $div .= '<span>Verifique se o conteúdo do e-mail está correto e depois pode enviar.</span><br><br>';
+        $div .= '<div id="rffSubjectEmail"><strong>Assunto: </strong>';
+        $div .= $subject;
+        $div .= '</div>';
+        $div .= '<div id="rffContentEmail" style="border:1px solid #cdcdcd;padding:5px;">';
+        $div .= $content;
+        $div .= '</div><br><br>';
+        $div .= '<div id="divSendEmail">Aguarde o envio do Email<div id="divReturnEmailSending"></div></div>';
+        $div .= '<br>';
+        $div .= '<button onclick="sendEmail(\''.$this->emailUser.'\')">Enviar email</button>';
+        $div .= '<button onclick="">Cancelar</button>';
+        $div .= '</div>';
+        echo $div;
     }
 }

@@ -175,3 +175,13 @@ function verifyOpenDivFormCategEmailRff(){
         document.getElementById('divFormCategEmailRff').style.display = 'block';
     }
 }
+
+
+/**
+ * Função de envio de emails
+ */
+
+function sendEmail(email){
+    let classSendEmail = new EmailRffFetch('');
+    classSendEmail.sendEmailsFetch(email);
+}

@@ -28,11 +28,15 @@ if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_email_controller.php")){
 if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_cat_controller.php")){
     include_once(EMAIL_RFF_CORE_INC."email_rff_db_cat_controller.php");
 }
+if(file_exists(EMAIL_RFF_CORE_INC."email_rff_send_email_controller.php")){
+    include_once(EMAIL_RFF_CORE_INC."email_rff_send_email_controller.php");
+}
 
 function email_rff_admin_page(){
     emailRffCreateFolderIfNotExists();
     $emailRffDBCategController = new EmailRffDBCategController();
     $emailRffDBEmailController = new EmailRffDBEmailController();
+    $emailRffSendEmailController = new EmailRffSendEmailController();
     $emailRffDBEmailController->actionOnSubmitForm();
     $emailRffDBCategController->actionOnSubmitForm();
     if(isset($_GET['idEmail'])){
@@ -47,6 +51,10 @@ function email_rff_admin_page(){
     }
     $emailRffDBCategController->displayTable();
     $emailRffDBCategController->displayFormCateg();
+    if(isset($_GET['idEmailSend'])){
+        $itemAr = $emailRffDBEmailController->getEmailByIdArray($_GET['idEmailSend']);
+        $emailRffSendEmailController->displaySendEmail($itemAr['content'], $itemAr['title']);
+    }
     ?>
     <div id="wrap">
         <div class="tab">
@@ -54,6 +62,7 @@ function email_rff_admin_page(){
 
             <span id="urlRff" style="display:none;"><?php echo EMAIL_RFF_URL_EDITOR; ?></span>
             <span id="dirRff" style="display:none;"><?php echo EMAIL_RFF_DIR_EDITOR; ?></span>
+            <span id="emailDirInc" style="display:none;"><?php echo EMAIL_RFF_URL_INC; ?></span>
         </div>
         <div id="content" style="background:white; min-height:80vh; padding:20px;">
             <a onclick="emailRffNewEmail()" class="page-title-action">Criar novo email</a>
@@ -96,6 +105,7 @@ function email_rff_admin_page(){
             <script>
                 localStorage.setItem("EMAIL_RFF_URL_EDITOR", document.getElementById('urlRff').innerHTML);
                 localStorage.setItem("EMAIL_RFF_DIR_EDITOR", document.getElementById('dirRff').innerHTML);
+                localStorage.setItem("EMAIL_RFF_DIR_INC", document.getElementById('emailDirInc').innerHTML);
             </script>
                 <?php
                     $emailRffDBEmailController->displayTable();

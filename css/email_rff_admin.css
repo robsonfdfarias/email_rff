@@ -34,3 +34,15 @@
 .btEmailRffDel:hover {
     background-color: rgb(207, 1, 1);
 }
+
+.emailRffDivSendEmail{
+    width:calc(100% - 40px);
+    height:calc(100% - 40px);
+    background-color:white;
+    padding:20px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1007;
+}
