@@ -1,6 +1,7 @@
 class EmailRffFetch{
     constructor(endpoint){
         this.endpoint = endpoint;
+        this.dir = localStorage.getItem('EMAIL_RFF_DIR_INC');
     }
     fetchEmail(cat){
         fetch("https://viacep.com.br/ws/01001000/json/")
@@ -20,8 +21,8 @@ class EmailRffFetch{
         });
     }
     sendEmailsFetch(emailUser){
-        let dir = localStorage.getItem('EMAIL_RFF_DIR_INC');
-        let url = dir+'email_rff_endpoint_sendEmail.php';
+        // let dir = localStorage.getItem('EMAIL_RFF_DIR_INC');
+        let url = this.dir+'email_rff_endpoint_sendEmail.php';
         // console.log(url)
         const emails = [
             'est6884@jaraguadosul.sc.gov.br',
@@ -34,7 +35,9 @@ class EmailRffFetch{
         let div = document.getElementById('divReturnEmailSending');
         let rffSubjectEmail = document.getElementById('rffSubjectEmail');
         let rffContentEmail = document.getElementById('rffContentEmail');
-        function sendNext(){
+        var check=false;
+        console.log(check);
+        function sendNext(check){
             if(index<emails.length){
                 const email = emails[index];
                 fetch(url, {
@@ -53,6 +56,7 @@ class EmailRffFetch{
                 .then(json => {
                     div.innerHTML += `<p>${json}</p>`;
                     // console.log(json);
+                    check=true;
                 })
                 .catch(erro => {
                     console.log('Erro encontrado: '+erro);
@@ -63,6 +67,25 @@ class EmailRffFetch{
                 })
             }
         }
-        sendNext();
+        sendNext(check);
+        console.log(check);
+    }
+    checkEmail(idEmail){
+        if(idEmail!=null){
+            let url = this.dir+'email_rff_endpoint_check_email.php';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idEmailSend: idEmail
+                })
+            })
+            .then(response => response.json())
+            .then(json=>{
+                document.getElementById('divReturnEmailSending').innerHTML+='<br>'+json;
+            })
+        }
     }
 }

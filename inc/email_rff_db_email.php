@@ -90,4 +90,19 @@ class EmailRffDBEmail{
         );
         return $res;
     }
+
+    function checkEmail($id){
+        $date = date('Y-m-d H-i-s');
+        $res = $this->db->update(
+            $this->table,
+            array(
+                "itemStatus" => "Enviado",
+                "sendingDate" => $date,
+            ),
+            array("id"=>$id),
+            array("%s"),
+            array("%d")
+        );
+        return $res;
+    }
 }

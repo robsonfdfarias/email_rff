@@ -46,5 +46,14 @@ class EmailRffAdminGetUrl{
         // Atualizar a URL sem recarregar a página
         window.history.replaceState({}, '', urlObj);
     }
+
+    getUrlParameter(varName) {
+        // Obter a URL atual
+        const url = window.location.href;
+        // Criar um objeto URL
+        const urlObj = new URL(url);
+        // Remover o parâmetro
+        return urlObj.searchParams.get(varName);
+    }
     
 }

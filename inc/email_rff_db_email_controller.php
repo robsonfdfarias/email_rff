@@ -65,6 +65,15 @@ class EmailRffDBEmailController{
         $id = $this->tools->checkIfPostVarEmpty($id);
         return $this->db->getEmailByIdArray($id);
     }
+    function checkEmail($id){
+        $id = $this->tools->checkIfPostVarEmpty($id);
+        $res = $this->db->checkEmail($id);
+        if($res){
+            return 'Email <strong>atualizado</strong> como Enviado';
+        }else{
+            return '<strong>Falha ao atualizar</strong> o email como Enviado.';
+        }
+    }
     function displayTable(){
         $arr = $this->getAllEmails();
         echo '<table class="wp-list-table widefat fixed striped" style="table-layout: auto !important;">

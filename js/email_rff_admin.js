@@ -175,7 +175,7 @@ function verifyOpenDivFormCategEmailRff(){
         document.getElementById('divFormCategEmailRff').style.display = 'block';
     }
 }
-
+// console.log(adminURL.getUrlParameter('idEmailSend'));
 
 /**
  * Função de envio de emails
@@ -184,4 +184,5 @@ function verifyOpenDivFormCategEmailRff(){
 function sendEmail(email){
     let classSendEmail = new EmailRffFetch('');
     classSendEmail.sendEmailsFetch(email);
+    classSendEmail.checkEmail(adminURL.getUrlParameter('idEmailSend'));
 }

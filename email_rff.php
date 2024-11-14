@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email Rff
 Description: Plugin com um editor de texto personalizado para envio de email e registro no banco de dados.
-Version: 2.0
+Version: 2.1
 Author: Robson Ferreira de Farias
 */
 
