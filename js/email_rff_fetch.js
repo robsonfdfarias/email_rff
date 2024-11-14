@@ -20,7 +20,7 @@ class EmailRffFetch{
             div.innerHTML = erro;
         });
     }
-    sendEmailsFetch(emailUser){
+    sendEmailsFetch(emailUser, urlOpen){
         // let dir = localStorage.getItem('EMAIL_RFF_DIR_INC');
         let url = this.dir+'email_rff_endpoint_sendEmail.php';
         // console.log(url)
@@ -35,12 +35,10 @@ class EmailRffFetch{
         let div = document.getElementById('divReturnEmailSending');
         let rffSubjectEmail = document.getElementById('rffSubjectEmail');
         let rffContentEmail = document.getElementById('rffContentEmail');
-        var check=false;
-        console.log(check);
-        function sendNext(check){
+        async function sendNext(){
             if(index<emails.length){
                 const email = emails[index];
-                fetch(url, {
+                await fetch(url, {
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -56,7 +54,6 @@ class EmailRffFetch{
                 .then(json => {
                     div.innerHTML += `<p>${json}</p>`;
                     // console.log(json);
-                    check=true;
                 })
                 .catch(erro => {
                     console.log('Erro encontrado: '+erro);
@@ -65,27 +62,10 @@ class EmailRffFetch{
                     index++;
                     setTimeout(sendNext, 300);
                 })
+            }else{
+                window.open(urlOpen, 'janela', 'height=450, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
             }
         }
-        sendNext(check);
-        console.log(check);
-    }
-    checkEmail(idEmail){
-        if(idEmail!=null){
-            let url = this.dir+'email_rff_endpoint_check_email.php';
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    idEmailSend: idEmail
-                })
-            })
-            .then(response => response.json())
-            .then(json=>{
-                document.getElementById('divReturnEmailSending').innerHTML+='<br>'+json;
-            })
-        }
+        sendNext();
     }
 }

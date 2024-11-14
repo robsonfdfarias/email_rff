@@ -183,6 +183,6 @@ function verifyOpenDivFormCategEmailRff(){
 
 function sendEmail(email){
     let classSendEmail = new EmailRffFetch('');
-    classSendEmail.sendEmailsFetch(email);
-    classSendEmail.checkEmail(adminURL.getUrlParameter('idEmailSend'));
+    let url = adminURL.returnUrlWithParameterUpdate('page', 'email-rff-check-page');
+    classSendEmail.sendEmailsFetch(email, url);
 }

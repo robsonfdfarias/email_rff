@@ -55,5 +55,16 @@ class EmailRffAdminGetUrl{
         // Remover o parâmetro
         return urlObj.searchParams.get(varName);
     }
+
+
+    returnUrlWithParameterUpdate(parameter, value) {
+        // Obter a URL atual
+        const url = window.location.href;
+        // Criar um objeto URL
+        const urlObj = new URL(url);
+        //seta o parâmetro novamente
+        urlObj.searchParams.set(parameter, value);
+        return urlObj.toString();
+    }
     
 }

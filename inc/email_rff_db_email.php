@@ -94,7 +94,7 @@ class EmailRffDBEmail{
     function checkEmail($id){
         $date = date('Y-m-d H-i-s');
         $res = $this->db->update(
-            $this->table,
+            $this->table_email,
             array(
                 "itemStatus" => "Enviado",
                 "sendingDate" => $date,

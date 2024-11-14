@@ -31,6 +31,9 @@ if(file_exists(EMAIL_RFF_CORE_INC."email_rff_db_cat_controller.php")){
 if(file_exists(EMAIL_RFF_CORE_INC."email_rff_send_email_controller.php")){
     include_once(EMAIL_RFF_CORE_INC."email_rff_send_email_controller.php");
 }
+if(file_exists(EMAIL_RFF_CORE_INC."email_rff_endpoint_check_email.php")){
+    include_once(EMAIL_RFF_CORE_INC."email_rff_endpoint_check_email.php");
+}
 
 function email_rff_admin_page(){
     emailRffCreateFolderIfNotExists();
