@@ -19,7 +19,7 @@ class EmailRffSendEmailController{
         $div .= '<div id="divSendEmail">Aguarde o envio do Email<div id="divReturnEmailSending"></div></div>';
         $div .= '<br>';
         $div .= '<button onclick="sendEmail(\''.$this->emailUser.'\')">Enviar email</button>';
-        $div .= '<button onclick="">Cancelar</button>';
+        $div .= '<button onclick="cancelSendEmail()">Cancelar</button>';
         $div .= '</div>';
         echo $div;
     }

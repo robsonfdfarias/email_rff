@@ -186,3 +186,8 @@ function sendEmail(email){
     let url = adminURL.returnUrlWithParameterUpdate('page', 'email-rff-check-page');
     classSendEmail.sendEmailsFetch(email, url);
 }
+
+function cancelSendEmail(){
+    adminURL.removeUrlParameter('idEmailSend');
+    location.reload();
+}
