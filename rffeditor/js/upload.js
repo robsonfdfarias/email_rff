@@ -133,6 +133,7 @@ function insertImg() {
   range.insertNode(divPai);
 }
 var controller =false;
+
 function imgOver(div){
   controller=true;
   let tools = document.createElement('div');

@@ -12,6 +12,7 @@ if(!defined('WPINC')){
 
 
  //Definição das constantes
+ define('EMAIL_RFF_CORE_MAIL', dirname(__FILE__).'/mail/'); //Caminho da pasta dos arquivos PHP
  define('EMAIL_RFF_CORE_INC', dirname(__FILE__).'/inc/'); //Caminho da pasta dos arquivos PHP
  define('EMAIL_RFF_DIR_IMG', dirname(__FILE__).'/img/'); //Caminho da pasta das imagens
  define('EMAIL_RFF_URL_IMG', plugins_url('img/', __FILE__)); //Caminho da pasta das imagens

@@ -1319,10 +1319,123 @@ function insertTableNovo(numRow, numCol) {
     let range = window.getSelection().getRangeAt(0);
     selection = window.getSelection().toString();
     let divPai = document.createElement('div');
+    // divPai.setAttribute('contenteditable', 'false');
+    // divPai.setAttribute('spellcheck', 'false');
+    // divPai.setAttribute('class', 'tabelaObj');
+    // divPai.setAttribute('class', 'item');
+    //---
+    divPai.setAttribute('class', 'item');
+    divPai.setAttribute('id', 'item');
+    divPai.setAttribute('dragstart', 'dragStart(event)');
+    divPai.setAttribute('drag', 'drag(event)');
+    divPai.setAttribute('dragend', 'dragend(event)');
+    divPai.setAttribute('draggable', 'true');
+    divPai.setAttribute('droppable', 'false');
+    divPai.setAttribute('ondragover', 'allowDrop2(event)');
     divPai.setAttribute('contenteditable', 'false');
-    divPai.setAttribute('spellcheck', 'false');
-    divPai.setAttribute('class', 'tabelaObj');
-    var table ='<div class="configTable" contenteditable="false" spellcheck="false">'
+    divPai.setAttribute('style', 'width:'+width+'px; height:'+height+'px; position:relative;overflow:visible;');
+    // divPai.setAttribute('onmouseover', "imgOver(this)")
+    divPai.setAttribute('onmouseout', "divToolsTableOut(this)")
+    divPai.setAttribute('onmouseover', "divToolsTableOver(this)")
+    var table = '';
+    // var table ='<div class="configTable" contenteditable="false" spellcheck="false">'
+    // // table+='<button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="rffeditor/imgEditor/mesclar-celula.svg" width="50" title="Opções de mesclagem"></button>';
+    // table+='<ul id="menuTable">';
+    // table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-celula.svg" height="40" title="Opções de mesclagem">';
+    // table+='<ul>';
+    // table+='<li><button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-lado.svg" height="40" title="Mesclar célula a direita"></button></li>';
+    // table+='<li><button id="testeSel" onclick="merge(\'column\', \'add\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-abaixo.svg" height="40" title="Mesclar célula abaixo"></button></li>';
+    // table+='<li><button id="testeSel" onclick="merge(\'row\', \'remove\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-remover-lado.svg" height="40" title="Remove mesclagem a direita"></button></li>';
+    // table+='<li><button id="testeSel" onclick="merge(\'column\', \'remove\')"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-remover-abaixo.svg" height="40" title="Remover mesclagem abaixo"></button></li>';
+    // table+='</ul>';
+    // table+='</li>';
+
+    // table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configRow.svg" height="40" title="Configuração de linha">';
+    // table+='<ul>';
+    // table+='<li><button id="testeSel" onclick="insertTrAfter()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableRowAfter.svg" height="40" title="Inserir linha depois"></li>';
+    // table+='<li><button id="testeSel" onclick="insertTrBefore()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableRowBefore.svg" height="40" title="Inserir linha antes"></li>';
+    // table+='<li><button id="testeSel" onclick="delTr()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/deleteTableRowAfter.svg" height="40" title="Apagar linha"></li>';
+    // // table+='<li><button id="testeSel" onclick="insertTrAfter()">Inserir linha depois</button></li>';
+    // // table+='<li><button id="testeSel" onclick="insertTrBefore()">Inserir linha antes</button></li>';
+    // // table+='<li><button id="testeSel" onclick="delTr()">Apagar linha</button></li>';
+    // table+='</ul>';
+    // table+='</li>';
+
+    // table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configColumn.svg" height="40" title="Configuração de coluna">';
+    // table+='<ul>';
+    // table+='<li><button id="testeSel" onclick="insertTdAfter()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableColumnAfter.svg" height="40" title="Inserir coluna depois"></button></li>';
+    // table+='<li><button id="testeSel" onclick="insertTdBefore()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/inserttableColumnBefore.svg" height="40" title="Inserir coluna antes"></button></li>';
+    // table+='<li><button id="testeSel" onclick="delTd()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/deleteTableColumn.svg" height="40" title="Apagar coluna"></button></li>';
+    // table+='</ul>';
+    // table+='</li>';
+
+    // table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell.svg" height="40" title="Configurar célula">';
+    // table+='<ul>';
+    // // table+='<li><button id="testeSel" onclick="rotateTdSel(\'sc\')"><img src="rffeditor/imgEditor/configCell-rotate-text.svg" height="40" title="Rotacionar o texto na célula"></button></li>';
+    // // table+='<li><button id="testeSel" onclick="getWindowBckgroundColorTDsel()"><img src="rffeditor/imgEditor/configCell-background.svg" height="40" title="Mudar a cor da célula"></button></li>';
+    // // table+='<li><button id="testeSel" onclick="openConfigBorderTdSel()"><img src="rffeditor/imgEditor/configCell-border.svg" height="40" title="Configurar borda da célula"></button></li>';
+    // table+='<li><button id="testeSel" onclick="openConfigTdSel()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-prop.svg" height="40" title="Configurar propriedade da célula"></button></li>';
+
+    // table+='<li><button id="testeSel" onclick="insertCellRight()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-insert-after.svg" height="40" title="Inserir célula depois"></button></li>';
+    // table+='<li><button id="testeSel" onclick="insertCellLeft()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-insert-before.svg" height="40" title="Inserir célula antes"></button></li>';
+    // table+='<li><button id="testeSel" onclick="removeCell()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configCell-delete.svg" height="40" title="Apagar célula"></button></li>';
+    // table+='</ul>';
+    // table+='</li>';
+
+    // table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
+    // table+='</ul>';
+    // table+='<button onclick="fecharJanTab(this)" draggable="false" droppable="false">X</button>';
+    // table+='</div>';
+    table += '<table cellspacing="0" class="tabela" id="tabelaInserida" onkeydown="keydownTable(event, this)" onkeyup="keyupTable(event, this)">';
+    for(i=0; i<=numRow; i++){
+        table+='<tr contenteditable="false" spellcheck="false">';
+        // table+='<tr contenteditable="false" spellcheck="false">';
+        if(i==0){
+            for(j=0;j<=numCol;j++){
+                if(j==0){
+                    table+='<td style="" contenteditable="false" spellcheck="false" id="tableTdInicialPoint"></td>';
+                }else{
+                    table+='<td contenteditable="false" spellcheck="false" id="tableTdInicialLarg" style=""></td>';
+                }
+            }
+        }else{
+            for(j=0;j<=numCol;j++){
+                if(j==0){
+                    // table+='<td style="'+styleFirstColumn+'" contenteditable="false" spellcheck="false" id="tableTdInicialSmall"></td>';
+                    table+='<td contenteditable="false" spellcheck="false" id="tableTdInicialSmall"></td>';
+                }else{
+                    table+='<td style="" contenteditable="true" spellcheck="true" onclick="actionClickTd(this)" class="">&nbsp;</td>';
+                    // table+='<td contenteditable="true" spellcheck="true">&nbsp;</td>';
+                }
+            }
+        }
+        table+='</tr>';
+    }
+    table+='</table>';
+    divPai.innerHTML=table;
+    range.insertNode(divPai);
+    saveState();
+}
+
+function divToolsTableOver(div){
+    controller=true;
+    let tools = document.createElement('div');
+    tools.setAttribute('id', 'tools');
+    tools.setAttribute('draggable', 'false');
+    tools.setAttribute('droppable', 'false');
+    tools.setAttribute('contenteditable', 'false');
+    tools.setAttribute('style', 'display:flex; position:absolute; left: 0; top:-60px; background-color: rgba(0,0,0,0.0); width:80%; cursor: default;')
+    tools.addEventListener('dragstart', function (event) {
+        event.preventDefault();
+    })
+    tools.addEventListener('mouseover', function(){
+        controller=true;
+    })
+    tools.addEventListener('mouseout', function(){
+        controller=false;
+    })
+    // var table ='<div class="configTable" contenteditable="false" spellcheck="false">'
+    var table =''
     // table+='<button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="rffeditor/imgEditor/mesclar-celula.svg" width="50" title="Opções de mesclagem"></button>';
     table+='<ul id="menuTable">';
     table+='<li><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/mesclar-celula.svg" height="40" title="Opções de mesclagem">';
@@ -1366,40 +1479,55 @@ function insertTableNovo(numRow, numCol) {
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
+    table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()" style="margin: 0;"><img src="'+EMAIL_RFF_DIR_EDITOR+'imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
     table+='</ul>';
-    table+='<button onclick="fecharJanTab(this)" draggable="false" droppable="false">X</button>';
-    table+='</div>';
-    table += '<table cellspacing="0" class="tabela" id="tabelaInserida" onkeydown="keydownTable(event, this)" onkeyup="keyupTable(event, this)">';
-    for(i=0; i<=numRow; i++){
-        table+='<tr contenteditable="false" spellcheck="false">';
-        // table+='<tr contenteditable="false" spellcheck="false">';
-        if(i==0){
-            for(j=0;j<=numCol;j++){
-                if(j==0){
-                    table+='<td style="" contenteditable="false" spellcheck="false" id="tableTdInicialPoint"></td>';
-                }else{
-                    table+='<td contenteditable="false" spellcheck="false" id="tableTdInicialLarg" style=""></td>';
-                }
+    table+='<button onclick="fecharJanTab(this)" draggable="false" droppable="false" style="margin: 0 0 5px; 0">X</button>';
+    // table+='</div>';
+    table+='';
+    // let bt1 = document.createElement('button');
+    // bt1.innerHTML='Editar';
+    // bt1.setAttribute('onclick', 'editVideo(this, event, \'img\')');
+    // bt1.setAttribute('draggable', 'false');
+    // bt1.setAttribute('droppable', 'false');
+    // bt1.addEventListener('dragstart', function (event) {
+    //     event.preventDefault();
+    // })
+    // let bt2 = document.createElement('button');
+    // bt2.innerHTML='X';
+    // bt2.setAttribute('onclick', 'fecharJanVid(this)');
+    // bt2.setAttribute('draggable', 'false');
+    // bt2.setAttribute('droppable', 'false');
+    // bt2.addEventListener('dragstart', function (event) {
+    //     event.preventDefault();
+    // })
+    // tools.appendChild(bt1);
+    // tools.appendChild(bt2);
+    tools.innerHTML = table;
+    if(div.childNodes.length<=1){
+        div.appendChild(tools)
+        div.addEventListener('mouseout', function(e){
+        controller=false;
+        setTimeout(()=>{
+            if(controller==false){
+            tools.remove();
             }
-        }else{
-            for(j=0;j<=numCol;j++){
-                if(j==0){
-                    // table+='<td style="'+styleFirstColumn+'" contenteditable="false" spellcheck="false" id="tableTdInicialSmall"></td>';
-                    table+='<td contenteditable="false" spellcheck="false" id="tableTdInicialSmall"></td>';
-                }else{
-                    table+='<td style="" contenteditable="true" spellcheck="true" onclick="actionClickTd(this)" class="">&nbsp;</td>';
-                    // table+='<td contenteditable="true" spellcheck="true">&nbsp;</td>';
-                }
-            }
-        }
-        table+='</tr>';
+        }, 1);
+        })
     }
-    table+='</table>';
-    divPai.innerHTML=table;
-    range.insertNode(divPai);
-    saveState();
 }
+
+function divToolsTableOut(obj){
+    let first = obj.firstElementChild;
+    if(first.getAttribute('id')==='tools'){
+        if(controller==false){
+        first.replaceChildren();
+        controller=true;
+        }
+    }
+}
+
+
+
 
 
 

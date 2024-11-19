@@ -11,6 +11,7 @@ class EmailRffTools{
     }
     function clear($var){
         $var = str_replace('\"', '"', $var);
+        $var = str_replace("\'", "'", $var);
         return $var;
     }
 }

@@ -43,7 +43,7 @@ function email_rff_admin_page(){
     $emailRffDBEmailController->actionOnSubmitForm();
     $emailRffDBCategController->actionOnSubmitForm();
     if(isset($_GET['idEmail'])){
-        // echo 'ID do email encontrado: '.$_GET['idEmail'];
+        // echo 'ID do email encontrado: '.$_GET['idEmail']; 
         $item = $emailRffDBEmailController->getEmailById($_GET['idEmail']);
         echo '<div id="email_rff_item_data" style="display:none;">'.$item.'</div>';
     }
