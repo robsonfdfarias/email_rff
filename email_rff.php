@@ -57,3 +57,10 @@ if(file_exists(EMAIL_RFF_CORE_INC.'email_rff_hooks.php')){
     register_activation_hook(__FILE__, 'email_rff_install');
     register_deactivation_hook(__FILE__, 'email_rff_uninstall');
 }
+if(file_exists(EMAIL_RFF_CORE_INC.'email_rff_graphql.php')){
+    require_once(EMAIL_RFF_CORE_INC.'email_rff_graphql.php');
+    //Registrar tipos e campos no GraphQl
+    add_action('graphql_register_types', 'register_custom_table_email_rff_categ_in_graphql');
+    //Registrar tipos e campos no GraphQl tabela name slide
+    add_action('graphql_register_types', 'register_custom_table_email_rff_item_in_graphql');
+}
