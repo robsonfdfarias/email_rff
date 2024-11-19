@@ -97,7 +97,7 @@ function getVarEditEmailRff(){
     let category = document.getElementById('email_rff_category');
     id.value = data.id;
     title.value = data.title;
-    content.innerHTML = document.getElementById('email_rff_conteudo_div').innerHTML;
+    content.innerHTML = document.getElementById('email_rff_item_content').innerHTML;
     category.appendChild(option);
     if(emailRffDivForm){
         emailRffDivForm.style.display='block';

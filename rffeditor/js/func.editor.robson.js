@@ -2778,7 +2778,7 @@ function headingCab(local) {
         anchor.appendChild(heading); 
         // Agora cria um link para essa seção. 
         var link = document.createElement("a"); 
-        link.href = "#TOC" + sectionNumber; 
+        link.href = "#RFFTOC" + sectionNumber; 
         // Destino do link 
         link.innerHTML = sectionNumber+' - '+heading.innerHTML; 
         // O texto do link é o mesmo do cabeçalho 
@@ -2850,7 +2850,8 @@ function deleteHeadingCab(local) {
         }
 
     }
-    local.removeChild(toc);
+    toc.remove();
+    // local.removeChild(toc);
 }
 
 

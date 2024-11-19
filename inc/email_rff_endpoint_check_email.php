@@ -19,7 +19,7 @@ function email_rff_check_page(){
     ?>
     <div class="wrap">
         <?php
-        echo '<h1>----/'.EMAIL_RFF_CORE_INC.'/-----</h1>';
+        // echo '<h1>----/'.EMAIL_RFF_CORE_INC.'/-----</h1>';
             if(file_exists(EMAIL_RFF_CORE_INC.'email_rff_db_email_controller.php')){
                 include_once(EMAIL_RFF_CORE_INC.'email_rff_db_email_controller.php');
                 $emailController = new EmailRffDBEmailController();

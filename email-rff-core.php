@@ -45,7 +45,8 @@ function email_rff_admin_page(){
     if(isset($_GET['idEmail'])){
         // echo 'ID do email encontrado: '.$_GET['idEmail']; 
         $item = $emailRffDBEmailController->getEmailById($_GET['idEmail']);
-        echo '<div id="email_rff_item_data" style="display:none;">'.$item.'</div>';
+        echo '<div id="email_rff_item_data" style="display:none;">'.$item['json'].'</div>';
+        echo '<div id="email_rff_item_content" style="display:none;">'.$item['content'].'</div>';
     }
     if(isset($_GET['idCateg'])){
         // echo 'ID do email encontrado: '.$_GET['idEmail'];

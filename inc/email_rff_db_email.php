@@ -37,10 +37,10 @@ class EmailRffDBEmail{
         $itemAr = '';
         foreach($res as $item){
             $cat = $this->db_categ->getCatById($item['category']);
+            $content = $item['content'];
             $itemAr = '{
                 "id": "'.$item['id'].'",
                 "title": "'.$item['title'].'",
-                "content": "<div id="email_rff_conteudo_div">'.$item['content'].'</div>",
                 "itemStatus": "'.$item['itemStatus'].'",
                 "category": {
                     "id": "'.$cat['id'].'",
@@ -48,8 +48,19 @@ class EmailRffDBEmail{
                     "statusItem": "'.$cat['statusItem'].'"
                 }
             }';
+            // $itemAr = '{
+            //     "id": "'.$item['id'].'",
+            //     "title": "'.$item['title'].'",
+            //     "content": "<div id="email_rff_conteudo_div">'.$item['content'].'</div>",
+            //     "itemStatus": "'.$item['itemStatus'].'",
+            //     "category": {
+            //         "id": "'.$cat['id'].'",
+            //         "title": "'.$cat['title'].'",
+            //         "statusItem": "'.$cat['statusItem'].'"
+            //     }
+            // }';
         }
-        return $itemAr;
+        return ["json"=>$itemAr, "content"=>$content];
     }
     function getEmailByIdArray($id){
         $res = $this->db->get_results("SELECT * FROM {$this->table_email} WHERE id={$id}", ARRAY_A);
