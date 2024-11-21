@@ -106,6 +106,9 @@ function getVarEditEmailRff(){
 
 verifyOpenDivAdminCategEmailRff();
 function verifyOpenDivAdminCategEmailRff(){
+    if(document.getElementById('divAdminCategEmailRff')==null){
+        return;
+    }
     if(adminURL.verifyVarUrl('adminCat')){
         document.getElementById('divAdminCategEmailRff').style.display = 'block';
     }else{
