@@ -16,6 +16,7 @@ class EmailRffAdminGetUrl{
 
     verifyVarUrl(varName){
         let url = window.location.href.split('?');
+        if(url.length<=1)return;
         let partes = url[1].split('&');
         for(let i=0; i<partes.length; i++){
             if(partes[i].includes(varName)){
